@@ -9,9 +9,6 @@ GLOBAL_OPTIONS = getattr(settings, 'REDACTOR_OPTIONS', {})
 
 INIT_JS = """<script type="text/javascript">
   jQuery(document).ready(function(){
-    $(".redactor_content").each(function (i) {
-        $(this).parent("div").parent("div").find("label").addClass("redactor_label");
-    });
     $("#%s").redactor(%s);
   });
 </script>
@@ -47,14 +44,9 @@ class RedactorEditor(widgets.Textarea):
         return json.dumps(options)
 
     def render(self, name, value, attrs=None):
-        html_class_name = attrs.get('class', '')
-        redactor_class = html_class_name and " redactor_content" or "redactor_content"
-        html_class_name += redactor_class
-        attrs['class'] = html_class_name
+        html = super(RedactorEditor, self).render(name, value, attrs)
         final_attrs = self.build_attrs(attrs)
         id_ = final_attrs.get('id')
-
-        html = super(RedactorEditor, self).render(name, value, attrs)
         html += INIT_JS % (id_, self.get_options())
         return mark_safe(html)
 
