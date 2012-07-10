@@ -1,5 +1,10 @@
-.redactor_box { display: inline-block; min-width: 750px; }
-.redactor_box textarea, .redactor_box iframe { min-height: 300px; }
-
-#redactor_tabs { padding-left: 0; }
-#redactor_tabs li, ul.redactor_toolbar li { list-style-type: none; display: inline; }
+.redactor_box {
+    width: 800px;
+}
+.redactor_box.wide {
+    width: 1200px;
+}
+.aligned label.redactor_label {
+    float: none;
+    padding-bottom: 10px;
+}
