@@ -117,3 +117,6 @@ h4 {
 	font-size: 1em;
 	margin-bottom: 10px;	
 }
+img:hover{
+	cursor: nw-resize;
+}

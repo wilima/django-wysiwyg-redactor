@@ -7,7 +7,10 @@
 	Copyright (c) 2009-2012, Imperavi Ltd.
 	Licensed under Creative Commons Attribution-NonCommercial 3.0 license. 
 	
-	Usage: $('#content').redactor();	
+	Usage: $('#content').redactor();
+
+	With some changes made ​​by me (Douglas Miranda - douglasmirandasilva@gmail.com)
+	Updated 2012.July.10
 */
 
 var RTOOLBAR = {};
@@ -1266,8 +1269,6 @@ var RTOOLBAR = {};
 			var x = 1;
 			var min_w = 1;
 			var min_h = 1;
-
-			$(resize).hover(function(){$(resize).css('cursor', 'nw-resize');}, function(){$(resize).css('cursor','default');clicked=false;});
 
 			$(resize).mousedown(function(e)
 			{
