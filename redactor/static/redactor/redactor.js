@@ -2115,6 +2115,11 @@ var RTOOLBAR = {};
 		this.data('redactor').execCommand(cmd, param);
 	};
 
+	$.fn.getSelection = function()
+	{
+		return this.data('redactor').getSelection();
+	};
+
 })(jQuery);
 
 /*
