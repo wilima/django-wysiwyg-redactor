@@ -912,7 +912,7 @@ var RTOOLBAR = {};
 					if (d.name == 'separator') drop_a = $('<a class="redactor_separator_drop">');
 					else
 					{
-						drop_a = $('<a href="javascript:void(null);" style="' + d.style + '">' + d.title + '</a>');
+						drop_a = $('<a href="javascript:void(null);" style="' + d.style + '">' + d.title + '</a>').addClass(x);
 
 						if (typeof(d.func) == 'undefined') $(drop_a).click($.proxy(function() { this.execCommand(d.exec, x); }, this));
 						else $(drop_a).click($.proxy(function(e) { this[d.func](e); }, this));
