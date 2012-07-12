@@ -194,7 +194,7 @@ var RTOOLBAR = {};
                         var marker = Math.floor(Math.random() * 99999);
                         var marker_text = '';
                         if ($.browser.mozilla) marker_text = '&nbsp;';
-                        var node = $('<span rel="pastemarkerend" id="pastemarkerend' + marker + '">' + marker_text + '</span>');
+                        var node = $('<span rel="pastemarkerend" id="pastemarkerend_' + marker + '">' + marker_text + '</span>');
                         this.insertNodeAtCaret(node.get(0));
                         
                         this.pasteCleanUp(marker);
@@ -700,12 +700,10 @@ var RTOOLBAR = {};
         },
         
         // PASTE CLEANUP
-        pasteCleanUp: function()
+        pasteCleanUp: function(marker)
         {
             var html = this.$editor.html();
-            
-            html = html.replace(/<span id="pastemarkerend">&nbsp;<\/span>/, '#marker#');
-            
+
             html = this.formating(html);
             html = this.cleanUp(html);
     
@@ -720,12 +718,11 @@ var RTOOLBAR = {};
             
             html = html.replace(/<b(.*?)id="internal-source-marker(.*?)">([\w\W]*?)<\/b>/gi, "$3");
 
-            html = html.replace(/#marker#/, '<span id="pastemarkerend">&nbsp;</span>');
-
             this.$editor.html(html);
 
-            var node = $(this.doc.body).find('#pastemarkerend').get(0);
+            var node = $(this.doc.body).find('#pastemarkerend_' + marker).get(0);
             this.setFocusNode(node);
+            $(node).remove();
 
             this.syncCode();
             this.observeImages();
