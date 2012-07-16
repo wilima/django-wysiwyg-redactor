@@ -1,3 +1,23 @@
+#Version modified of django-redactorjs
+
+I modified things like:
+
+* version of plugin redactorjs 7.6.3 (so this changes the license too)
+* add new API method `$('#redactor').getSelection()` get the selected content in editor
+* fixing some bugs, adapting things...
+
+If you want to install my version, just install with:
+
+``pip install git+https://github.com/douglasmiranda/django-redactorjs#egg=django-redactorjs``
+
+* Add `'redactor'` to INSTALLED_APPS.
+
+* Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
+
+
+Anyway the original README is below.
+
+
 django-redactorjs
 ===============
 http://github.com/TigorC/django-redactorjs
@@ -46,9 +66,11 @@ Using in model
 
 or use custom parametrs:
 
-    short_text = RedactorField(verbose_name=u'Краткий текст',
-                    redactor_options={'lang': 'ru', 'focus': 'true'},
-                    upload_to='tmp/')
+    short_text = RedactorField(
+        verbose_name=u'Краткий текст',
+        redactor_options={'lang': 'ru', 'focus': 'true'},
+        upload_to='tmp/'
+    )
 
 Using for only admin interface
 -----------------------------
@@ -67,3 +89,8 @@ Using for only admin interface
         form = EntryAdminForm
 
 `RedactorEditor` takes the same parameters as `RedactorField`
+
+## License 
+Starting with version 7.6.2 redactor-js is licensed under [Creative Commons Attribution-NonCommercial 3.0 license](http://creativecommons.org/licenses/by-nc/3.0/)
+
+For commercial use please buy license here: http://redactorjs.com/download/ or use earlier version.
