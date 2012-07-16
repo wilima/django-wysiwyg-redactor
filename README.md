@@ -1,4 +1,3 @@
-
 django-redactorjs
 ===============
 http://github.com/TigorC/django-redactorjs
@@ -16,7 +15,7 @@ Dependence
 - `PIL` # for image upload
 
 Getting started
------------
+---------------
 
 * Install django-redactorjs:
 
@@ -35,7 +34,7 @@ REDACTOR_UPLOAD = 'uploads/'
 ```
 
 Using in model
------------
+--------------
 
 
     from django.db import models
@@ -50,3 +49,21 @@ or use custom parametrs:
     short_text = RedactorField(verbose_name=u'Краткий текст',
                     redactor_options={'lang': 'ru', 'focus': 'true'},
                     upload_to='tmp/')
+
+Using for only admin interface
+-----------------------------
+    from django import forms
+    from redactor.widgets import RedactorEditor
+    from blog.models import Entry
+
+    class EntryAdminForm(forms.ModelForm):
+        class Meta:
+            model = Entry
+            widgets = {
+               'short_text': RedactorEditor(),
+            }
+
+    class EntryAdmin(admin.ModelAdmin):
+        form = EntryAdminForm
+
+`RedactorEditor` takes the same parameters as `RedactorField`
