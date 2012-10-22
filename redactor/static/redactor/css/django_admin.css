@@ -1,4 +1,5 @@
-.redactor_box { display: inline-block; min-width: 750px; }
+.redactor_box { max-width: 769px; }
+body .redactor_box_fullscreen{ max-width: none; }
 .redactor_box textarea, .redactor_box iframe { min-height: 300px; }
 
 #redactor_tabs { padding-left: 0; }
