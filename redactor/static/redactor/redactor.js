@@ -10,7 +10,6 @@
     Usage: $('#content').redactor();
 
     With some changes made ​​by me (Douglas Miranda - douglasmirandasilva@gmail.com)
-    Updated 2012.July.10
 */
 
 var RTOOLBAR = {};
@@ -46,6 +45,7 @@ var RTOOLBAR = {};
         
             path: false,
             css: 'style.css',
+            extra_script: false, //false or url
             focus: true,
             resize: true,
             autoresize: false,
@@ -74,17 +74,194 @@ var RTOOLBAR = {};
             overlay: true, // modal overlay
 
             colors: Array(
-                '#ffffff', '#000000', '#eeece1', '#1f497d', '#4f81bd', '#c0504d', '#9bbb59', '#8064a2', '#4bacc6', '#f79646', '#ffff00',
-                '#f2f2f2', '#7f7f7f', '#ddd9c3', '#c6d9f0', '#dbe5f1', '#f2dcdb', '#ebf1dd', '#e5e0ec', '#dbeef3', '#fdeada', '#fff2ca',
-                '#d8d8d8', '#595959', '#c4bd97', '#8db3e2', '#b8cce4', '#e5b9b7', '#d7e3bc', '#ccc1d9', '#b7dde8', '#fbd5b5', '#ffe694',
-                '#bfbfbf', '#3f3f3f', '#938953', '#548dd4', '#95b3d7', '#d99694', '#c3d69b', '#b2a2c7', '#b7dde8', '#fac08f', '#f2c314',
-                '#a5a5a5', '#262626', '#494429', '#17365d', '#366092', '#953734', '#76923c', '#5f497a', '#92cddc', '#e36c09', '#c09100',
-                '#7f7f7f', '#0c0c0c', '#1d1b10', '#0f243e', '#244061', '#632423', '#4f6128', '#3f3151', '#31859b', '#974806', '#7f6000'),
+                'ffffff', '000000', 'eeece1', '1f497d', '4f81bd', 'c0504d', '9bbb59', '8064a2', '4bacc6', 'f79646', 'ffff00',
+                'f2f2f2', '7f7f7f', 'ddd9c3', 'c6d9f0', 'dbe5f1', 'f2dcdb', 'ebf1dd', 'e5e0ec', 'dbeef3', 'fdeada', 'fff2ca',
+                'd8d8d8', '595959', 'c4bd97', '8db3e2', 'b8cce4', 'e5b9b7', 'd7e3bc', 'ccc1d9', 'b7dde8', 'fbd5b5', 'ffe694',
+                'bfbfbf', '3f3f3f', '938953', '548dd4', '95b3d7', 'd99694', 'c3d69b', 'b2a2c7', 'b7dde8', 'fac08f', 'f2c314',
+                'a5a5a5', '262626', '494429', '17365d', '366092', '953734', '76923c', '5f497a', '92cddc', 'e36c09', 'c09100',
+                '7f7f7f', '0c0c0c', '1d1b10', '0f243e', '244061', '632423', '4f6128', '3f3151', '31859b', '974806', '7f6000'),
 
             // private
             allEmptyHtml: '<p><br /></p>',
-            mozillaEmptyHtml: '<p>&nbsp;</p>'
+            mozillaEmptyHtml: '<p>&nbsp;</p>',
 
+            modal_file: '' +
+                '<form id="redactorUploadFileForm" method="post" action="" enctype="multipart/form-data">' +
+                   '<input type="file" id="redactor_file" name="file" />' +
+                '</form>',
+
+            modal_image: '' +
+                '<div id="redactor_tabs">' +
+                   '<a href="javascript:void(null);" class="redactor_tabs_act">%__.upload%</a>' +   
+                   '<a href="javascript:void(null);">%__.choose%</a> '+
+                   '<a href="javascript:void(null);">%__.link%</a> '+ 
+                '</div>' +
+                '<form id="redactorInsertImageForm" method="post" action="" enctype="multipart/form-data">' +
+                   '<div id="redactor_tab1" class="redactor_tab">' +
+                   '<input type="file" id="redactor_file" name="file" />' +
+                   '</div>' +
+                    '<div id="redactor_tab2" class="redactor_tab" style="display: none;">' +
+                        '<div id="redactor_image_box"></div>' +
+                    '</div>' +
+                '</form> ' +
+                '<div id="redactor_tab3" class="redactor_tab" style="display: none;">' +
+                    '<table class="redactor_ruler" width="100%">' +
+                        '<tr>' +
+                            '<td nowrap>%__.image_web_link%</td>' +
+                   '<td width="100%"><input name="redactor_file_link" id="redactor_file_link"  style="width: 99%"  /></td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td></td>' +
+                            '<td>' +
+                                '<span class="redactor_btns_box">' +
+                                    '<input type="button" name="upload" id="redactor_upload_btn" value="%__.insert%" />&nbsp;&nbsp;' +
+                                    '<a href="javascript:void(null);" style="color: #777; font-size: 12px;" id="redactor_btn_modal_close">%__.cancel%</a>' +
+                                '</span>' +
+                                '<div style="clear: both;"></div>' +
+                            '</td>' +
+                        '</tr>' +
+                    '</table>' +
+                '</div>',
+
+            modal_image_edit: '' +
+                '<table class="redactor_ruler">' +
+                    '<tr>' +
+                        '<td nowrap>%__.title%</td>' +
+                        '<td><input id="redactor_file_alt" style="width: 99%;" /></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td nowrap>%__.link%</td>' +
+                        '<td><input id="redactor_file_link" style="width: 99%;" /></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td nowrap class="small">%__.image_position%</td>' +
+                        '<td width="100%">' +
+                            '<select id="redactor_form_image_align">' +
+                                '<option value="none">%__.none%</option>' +
+                                '<option value="left">%__.left%</option>' +
+                                '<option value="right">%__.right%</option>' +
+                            '</select>' +
+                        '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>' +
+                            '<a href="javascript:void(null);" id="redactor_image_delete_btn" style="color: #000;">%__._delete%</a>' +
+                        '</td>' +
+                        '<td>' +
+                            '<span class="redactor_btns_box">' +
+                                '<input type="button" name="sav" id="redactorSaveBtn" value="%__.save%" />&nbsp;&nbsp;' +
+                                '<a href="javascript:void(null);" style="color: #777; font-size: 12px;" id="redactor_btn_modal_close">%__.cancel%</a>' +
+                            '</span>' +
+                            '<div style="clear: both;"></div>' +
+                        '</td>' +
+                    '</tr>' +
+                '</table>',
+
+            modal_link: '' +
+                '<form id="redactorInsertLinkForm" method="post" action="" enctype="multipart/form-data">' +
+                    '<div id="redactor_tabs">' +
+                        '<a href="javascript:void(null);" class="redactor_tabs_act">URL</a>' +
+                        '<a href="javascript:void(null);">Email</a>' +
+                        '<a href="javascript:void(null);">%__.anchor%</a>' +
+                        '<a href="javascript:void(null);">%__.file%</a>' +
+                    '</div>' +
+                    '<input type="hidden" id="redactor_tab_selected" value="1" />' +
+                    '<div class="redactor_tab" id="redactor_tab1">' +
+                        '<table class="redactor_ruler">' +
+                            '<tr>' +
+                                '<td nowrap>URL</td>' +
+                                '<td width="100%"><input id="redactor_link_url" style="width: 99%; font-size: 16px;"  /></td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td>%__.text%</td>' +
+                                '<td><input class="redactor_link_text" id="redactor_link_url_text" style="width: 99%; font-size: 16px;" /></td>' +
+                            '</tr>' +
+                        '</table>' +
+                    '</div>' +
+                    '<div class="redactor_tab" id="redactor_tab2" style="display: none;">' +
+                        '<table class="redactor_ruler">' +
+                            '<tr>' +
+                                '<td nowrap>Email</td>' +
+                                '<td width="100%"><input id="redactor_link_mailto" style="width: 99%; font-size: 16px;"  /></td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td>%__.text%</td>' +
+                                '<td><input class="redactor_link_text" id="redactor_link_mailto_text" style="width: 99%; font-size: 16px;" /></td>' +
+                            '</tr>' +
+                        '</table>' +
+                    '</div>' +
+                    '<div class="redactor_tab" id="redactor_tab3" style="display: none;">' +
+                        '<table class="redactor_ruler">' +
+                            '<tr>' +
+                                '<td nowrap>%__.anchor%</td>' +
+                                '<td width="100%"><input id="redactor_link_anchor" style="width: 99%; font-size: 16px;"  /></td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td>%__.text%</td>' +
+                                '<td><input class="redactor_link_text" id="redactor_link_anchor_text" style="width: 99%; font-size: 16px;" /></td>' +
+                            '</tr>' +
+                        '</table>' +
+                    '</div>' +
+                    '<div class="redactor_tab" id="redactor_tab4" style="display: none;">' +
+                        '<table class="redactor_ruler">' +
+                            '<tr>' +
+                                '<td>%__.text%</td>' +
+                                '<td><input class="redactor_link_text" id="redactor_link_file_text" style="width: 99%; font-size: 16px;" /></td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td></td>' +
+                                '<td>' +
+                                    '<input type="file" id="redactor_file" name="file" />' +
+                                '</td>' +
+                            '</tr>' +
+                        '</table>' +
+                    '</div>' +
+                '</form>' +
+                '<span class="redactor_btns_box">' +
+                '<input type="button" id="redactor_insert_link_btn" value="%__.insert%" />&nbsp;&nbsp;' +
+                    '<a href="javascript:void(null);" style="color: #777; font-size: 12px;" id="redactor_btn_modal_close">' +
+                        '%__.cancel%' +
+                    '</a>' +
+                '</span>' +
+                '<div style="clear: both;"></div>',
+
+            modal_table: '' +
+                '<table class="redactor_ruler" width="99%">' +
+                    '<tr>' +
+                        '<td>%__.Rows%:</td>' +
+                        '<td width="100%"><input size="5" value="2" id="redactor_table_rows" /></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td>%__.Columns%:</td>' +
+                        '<td><input size="5" value="3" id="redactor_table_columns" /></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                        '<td></td>' +
+                        '<td>' +
+                            '<br />' +
+                            '<span class="redactor_btns_box">' +
+                                '<input type="button" name="upload" id="redactor_insert_table_btn" value="%__.insert%" />&nbsp;&nbsp;' +
+                                '<a href="javascript:void(null);" style="color: #777; font-size: 12px;" id="redactor_btn_modal_close">%__.cancel%</a>' +
+                            '</span>' +
+                            '<div style="clear: both;"></div>' +
+                        '</td>' +
+                    '</tr>' +
+                '</table>',
+
+            modal_video: '' +
+                '<form id="redactorInsertVideoForm">' +
+                    '<div style="font-size: 11px; margin-bottom: 3px;">%__.video_html_code%</div>' +
+                    '<table class="redactor_ruler" style="width: 99%;">' +
+                        '<tr>' +
+                            '<textarea id="redactor_insert_video_area" style="width: 99%; height: 160px;"></textarea>' +
+                        '</tr>' +
+                    '</table>' +
+                '</form>' +
+                '<span class="redactor_btns_box">' +
+                    '<input type="button" id="redactor_insert_video_btn" value="%__.insert%" />&nbsp;&nbsp;' +
+                    '<a href="javascript:void(null);" style="color: #777; font-size: 12px;" id="redactor_btn_modal_close">%__.cancel%</a>' +
+                '</span>' +
+                '<div style="clear: both;"></div>'
 
         }, options, this.$el.data());
     
@@ -151,6 +328,7 @@ var RTOOLBAR = {};
 
                 files.push(this.opts.path + '/langs/' + this.opts.lang + '.js');
                 if (this.opts.toolbar !== false) files.push(this.opts.path + '/toolbars/' + this.opts.toolbar + '.js');
+                if (this.opts.extra_script !== false) files.push(this.opts.path + '/' + this.opts.extra_script);
                 files.push($.proxy(this.start, this));
 
                 this.loadFiles(files);
@@ -942,7 +1120,7 @@ var RTOOLBAR = {};
             var len = this.opts.colors.length;
             for (var i = 0; i < len; ++i)
             {
-                var color = this.opts.colors[i];
+                var color = '#' + this.opts.colors[i];
 
                 var swatch = $('<a rel="' + color + '" href="javascript:void(null);" class="redactor_color_link"></a>').css({ 'backgroundColor': color });
                 $(dropdown).append(swatch);
@@ -1321,7 +1499,7 @@ var RTOOLBAR = {};
         // TABLE
         showTable: function()
         {
-            this.modalInit(RLANG.table, this.opts.path + '/plugins/table.html', 300, $.proxy(function()
+            this.modalInit(RLANG.table, 'table', 344, $.proxy(function()
             {
                 $('#redactor_table_rows').focus();
                 $('#redactor_insert_table_btn').click($.proxy(this.insertTable, this));
@@ -1475,7 +1653,7 @@ var RTOOLBAR = {};
         {
             if ($.browser.msie) this.markerIE();
 
-            this.modalInit(RLANG.video, this.opts.path + '/plugins/video.html', 600, $.proxy(function()
+            this.modalInit(RLANG.video, 'video', 600, $.proxy(function()
             {
                 $('#redactor_insert_video_area').focus();
                 $('#redactor_insert_video_btn').click($.proxy(this.insertVideo, this));
@@ -1515,7 +1693,7 @@ var RTOOLBAR = {};
 
             }, this);
 
-            this.modalInit(RLANG.image, this.opts.path + '/plugins/image_edit.html', 380,  handler);
+            this.modalInit(RLANG.image, 'image_edit', 380,  handler);
 
         },
         imageDelete: function(el)
@@ -1617,7 +1795,7 @@ var RTOOLBAR = {};
 
             }, this);
     
-            this.modalInit(RLANG.image, this.opts.path + '/plugins/image.html', 570, handler, true);
+            this.modalInit(RLANG.image, 'image', 570, handler, true);
 
         },
         imageSetThumb: function(e)
@@ -1730,7 +1908,7 @@ var RTOOLBAR = {};
 
             }, this);
             
-            this.modalInit(RLANG.link, this.opts.path + '/plugins/link.html', 460, handler);
+            this.modalInit(RLANG.link, 'link', 460, handler);
 
         },
         insertLink: function()
@@ -1811,7 +1989,7 @@ var RTOOLBAR = {};
                 }, this)});
             }, this);
 
-            this.modalInit(RLANG.file, this.opts.path + '/plugins/file.html', 500, handler);
+            this.modalInit(RLANG.file, 'file', 500, handler);
         },
         fileUploadCallback: function(data)
         {
@@ -1831,7 +2009,7 @@ var RTOOLBAR = {};
         
         
         // MODAL
-        modalInit: function(title, url, width, handler, scroll)
+        modalInit: function(title, modal_name, width, handler, scroll)
         {
             // modal overlay
             if ($('#redactor_modal_overlay').size() == 0)
@@ -1859,59 +2037,51 @@ var RTOOLBAR = {};
             $(document).keyup(this.hdlModalClose);
             $(this.doc).keyup(this.hdlModalClose);
 
-            $.ajax({
-                dataType: 'html',
-                type: 'get',
-                url: url,
-                success: $.proxy(function(data)
+            data = this.opts['modal_' + modal_name];
+            // parse lang
+            $.each(RLANG, function(i,s)
                 {
-                    // parse lang
-                    $.each(RLANG, function(i,s)
-                    {
-                        var re = new RegExp("%RLANG\." + i + "%","gi");
-                        data = data.replace(re, s);
-                    });
+                    var re = new RegExp("%__\." + i + "%", "gi");
+                    data = data.replace(re, s);
+                });
 
-                    $('#redactor_modal_inner').html(data);
-                    $('#redactor_modal_header').html(title);
-                    
-                    // tabs
-                    if ($('#redactor_tabs').size() != 0)
+                $('#redactor_modal_inner').html(data);
+                $('#redactor_modal_header').html(title);
+                
+                // tabs
+                if ($('#redactor_tabs').size() != 0)
+                {
+                    $('#redactor_tabs a').each(function(i,s)
                     {
-                        $('#redactor_tabs a').each(function(i,s)
+                        i++;
+                        $(s).click(function()
                         {
-                            i++;
-                            $(s).click(function()
-                            {
-                                $('#redactor_tabs a').removeClass('redactor_tabs_act');
-                                $(this).addClass('redactor_tabs_act');
-                                $('.redactor_tab').hide();
-                                $('#redactor_tab' + i).show();
-                                $('#redactor_tab_selected').val(i);
-                                
-                                var height = $('#redactor_modal').outerHeight();
-                                $('#redactor_modal').css('margin-top', '-' + (height+10)/2 + 'px');
-                            });
+                            $('#redactor_tabs a').removeClass('redactor_tabs_act');
+                            $(this).addClass('redactor_tabs_act');
+                            $('.redactor_tab').hide();
+                            $('#redactor_tab' + i).show();
+                            $('#redactor_tab_selected').val(i);
+                            
+                            var height = $('#redactor_modal').outerHeight();
+                            $('#redactor_modal').css('margin-top', '-' + (height+10)/2 + 'px');
                         });
-                    }
+                    });
+                }
 
-                    $('#redactor_btn_modal_close').click($.proxy(this.modalClose, this));
-                    
-                    // callback
-                    if (typeof(handler) == 'function') handler();
-                    
-                    // setup
-                    var height = $('#redactor_modal').outerHeight();
-                                    
-                    $('#redactor_modal').css({ width: width + 'px', height: 'auto', marginTop: '-' + (height+10)/2 + 'px', marginLeft: '-' + (width+60)/2 + 'px' }).fadeIn('fast');
+                $('#redactor_btn_modal_close').click($.proxy(this.modalClose, this));
+                
+                // callback
+                if (typeof(handler) == 'function') handler();
+                
+                // setup
+                var height = $('#redactor_modal').outerHeight();
+                                
+                $('#redactor_modal').css({ width: width + 'px', height: 'auto', marginTop: '-' + (height+10)/2 + 'px', marginLeft: '-' + (width+60)/2 + 'px' }).fadeIn('fast');
 
-                    if (scroll === true)
-                    {
-                        $('#redactor_image_box').height(300).css('overflow', 'auto');
-                    }                   
-
-                }, this)
-            });
+                if (scroll === true)
+                {
+                    $('#redactor_image_box').height(300).css('overflow', 'auto');
+                }
         },
         modalClose: function()
         {
@@ -2119,6 +2289,11 @@ var RTOOLBAR = {};
     $.fn.getSelection = function()
     {
         return this.data('redactor').getSelection();
+    };
+
+    $.fn.getSettings = function()
+    {
+        return this.data('redactor').opts;
     };
 
 })(jQuery);
