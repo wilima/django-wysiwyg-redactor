@@ -15,6 +15,10 @@ If you want to install my version, just install with:
 * Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
 
 
+##Screenshot
+
+<img src="https://raw.github.com/douglasmiranda/django-redactorjs/master/static/img/screenshot.png">
+
 Anyway the original README is below.
 
 
