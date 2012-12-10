@@ -3,12 +3,15 @@
 I modified things like:
 
 * version of plugin redactorjs 7.6.3 (so this changes the license too)
-* add new API method `$('#redactor').getSelection()` get the selected content in editor
+* new API method `$('#redactor').getSelection()` get the selected content in editor
+* new API method `$('#redactor').getSettings()` you can get and set settings anytime you want
+* removing some ajax calls, (modal windows), to avoid the crossdomain issue on production env
+* with the *extra_script* option/setting you can load some script to do something more after load the redactor
 * fixing some bugs, adapting things...
 
 If you want to install my version, just install with:
 
-``pip install git+https://github.com/douglasmiranda/django-redactorjs#egg=django-redactorjs``
+``pip install git+https://github.com/douglasmiranda/django-redactorjs``
 
 * Add `'redactor'` to INSTALLED_APPS.
 
