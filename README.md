@@ -1,39 +1,24 @@
-#Version modified of django-redactorjs
+# django-wysiwyg-redactor
+
+(Version modified of django-redactorjs)
 
 I modified things like:
 
-* version of plugin redactorjs 7.6.3 (so this changes the license too)
+* version of plugin redactorjs 7.6.3 (changes the license too)
 * new API method `$('#redactor').getSelection()` get the selected content in editor
 * new API method `$('#redactor').getSettings()` you can get and set settings anytime you want
 * removing some ajax calls, (modal windows), to avoid the crossdomain issue on production env
 * with the *extra_script* option/setting you can load some script to do something more after load the redactor
 * fixing some bugs, adapting things...
 
-If you want to install my version, just install with:
+## Screenshot
 
-``pip install git+https://github.com/douglasmiranda/django-redactorjs``
-
-* Add `'redactor'` to INSTALLED_APPS.
-
-* Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
-
-
-##Screenshot
-
-<img src="https://raw.github.com/douglasmiranda/django-redactorjs/master/static/img/screenshot.png">
-
-Anyway the original README is below.
-
-
-django-redactorjs
-===============
-http://github.com/TigorC/django-redactorjs
-
+<img src="https://raw.github.com/douglasmiranda/django-wysiwyg-redactor/master/static/img/screenshot.png">
 
 What's that
 -----------
 
-*django-redactorjs is a reusable application for Django, using WYSIWYG editor http://redactorjs.com/*
+*django-wysiwyg-redactor is a reusable application for Django, using WYSIWYG editor http://redactorjs.com/*
 
 Dependence
 -----------
@@ -44,56 +29,57 @@ Dependence
 Getting started
 ---------------
 
-* Install django-redactorjs:
+* Install django-wysiwyg-redactor:
 
-``pip install django-redactorjs
-``
+``pip install django-wysiwyg-redactor``
 
 * Add `'redactor'` to INSTALLED_APPS.
 
 * Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
 
-* Add default config in settings.py (more settings see: <http://redactorjs.com/docs/settings/>):
+* Add default config in settings.py (more settings see: <https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings>):
 
-```
-REDACTOR_OPTIONS = {'lang': 'ru'}
+```python
+REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads/'
 ```
 
 Using in model
 --------------
 
+```python
+from django.db import models
+from redactor.fields import RedactorField
 
-    from django.db import models
-    from redactor.fields import RedactorField
-
-    class Entry(models.Model):
-        title = models.CharField(max_length=250, verbose_name=u'Заголовок')
-        short_text = RedactorField(verbose_name=u'Краткий текст')
-
+class Entry(models.Model):
+    title = models.CharField(max_length=250, verbose_name=u'Title')
+    short_text = RedactorField(verbose_name=u'Text')
+```
 or use custom parametrs:
-
+```python
     short_text = RedactorField(
-        verbose_name=u'Краткий текст',
-        redactor_options={'lang': 'ru', 'focus': 'true'},
+        verbose_name=u'Text',
+        redactor_options={'lang': 'en', 'focus': 'true'},
         upload_to='tmp/'
     )
-
+```
 Using for only admin interface
 -----------------------------
-    from django import forms
-    from redactor.widgets import RedactorEditor
-    from blog.models import Entry
+```python
+from django import forms
+from redactor.widgets import RedactorEditor
+from blog.models import Entry
 
-    class EntryAdminForm(forms.ModelForm):
-        class Meta:
-            model = Entry
-            widgets = {
-               'short_text': RedactorEditor(),
-            }
+class EntryAdminForm(forms.ModelForm):
+    class Meta:
+        model = Entry
+        widgets = {
+           'short_text': RedactorEditor(),
+        }
 
-    class EntryAdmin(admin.ModelAdmin):
-        form = EntryAdminForm
+class EntryAdmin(admin.ModelAdmin):
+    form = EntryAdminForm
+```
 
 `RedactorEditor` takes the same parameters as `RedactorField`
 

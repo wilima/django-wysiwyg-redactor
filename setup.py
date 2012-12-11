@@ -7,19 +7,19 @@ readme = f.read()
 f.close()
 
 setup(
-    name='django-redactorjs',
+    name='django-wysiwyg-redactor',
     version=".".join(map(str, VERSION)),
     description='This reusable Django app using WYSIWYG editor redactorjs.com',
     long_description=readme,
-    author="Igor Tokarev",
-    author_email='TigorC@gmail.com',
-    url='http://github.com/TigorC/django-redactorjs',
+    author="Douglas Miranda",
+    author_email='douglasmirandasilva@gmail.com',
+    url='https://github.com/douglasmiranda/django-wysiwyg-redactor',
     packages=['redactor'],
     include_package_data=True,
     install_requires=['setuptools'],
     zip_safe=False,
     classifiers=[
-    'Development Status :: 4 - Beta',
+    'Development Status :: 4.5 - Beta',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
