@@ -9,7 +9,7 @@
     
     Usage: $('#content').redactor();
 
-    With some changes made ​​by me (Douglas Miranda - douglasmirandasilva@gmail.com)
+    With some improvements
 */
 
 var RTOOLBAR = {};
