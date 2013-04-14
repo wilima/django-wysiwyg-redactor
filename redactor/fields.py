@@ -3,6 +3,7 @@ from django.db.models import Field
 from redactor.widgets import RedactorEditor
 from django.conf import settings
 
+
 class RedactorField(Field):
     def __init__(self, *args, **kwargs):
         options = kwargs.pop('redactor_options', {})
@@ -17,7 +18,6 @@ class RedactorField(Field):
         defaults = {'widget': self.widget}
         defaults.update(kwargs)
         return super(RedactorField, self).formfield(**defaults)
-
 
 
 if 'south' in settings.INSTALLED_APPS:
