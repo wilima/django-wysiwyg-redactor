@@ -2,13 +2,14 @@
 
 (Version modified of django-redactorjs)
 
-I modified things like:
+Some changes:
 
-* version of plugin redactorjs 7.6.3 (changes the license too)
+* version of plugin redactorjs 7.6.3 (changes the [license](#license) too)
 * new API method `$('#redactor').getSelection()` get the selected content in editor
 * new API method `$('#redactor').getSettings()` you can get and set settings anytime you want
 * removing some ajax calls, (modal windows), to avoid the crossdomain issue on production env
 * with the *extra_script* option/setting you can load some script to do something more after load the redactor
+* now the redactor toolbar is more responsive
 * fixing some bugs, adapting things...
 
 ## Screenshot
