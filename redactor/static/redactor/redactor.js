@@ -1,6 +1,5 @@
 /*
     Redactor v7.6.3
-    Updated 31.05.2012
     
     http://redactorjs.com/
         
