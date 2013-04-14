@@ -85,6 +85,6 @@ class EntryAdmin(admin.ModelAdmin):
 `RedactorEditor` takes the same parameters as `RedactorField`
 
 ## License 
-Starting with version 7.6.2 redactor-js is licensed under [Creative Commons Attribution-NonCommercial 3.0 license](http://creativecommons.org/licenses/by-nc/3.0/)
+Starting with version 7.6.3 redactor-js is licensed under [Creative Commons Attribution-NonCommercial 3.0 license](http://creativecommons.org/licenses/by-nc/3.0/)
 
 For commercial use please buy license here: http://redactorjs.com/download/ or use earlier version.
