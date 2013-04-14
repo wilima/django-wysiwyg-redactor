@@ -32,7 +32,9 @@ Getting started
 
 * Install django-wysiwyg-redactor:
 
-```pip install django-wysiwyg-redactor```
+```
+pip install django-wysiwyg-redactor
+```
 
 * Add `'redactor'` to INSTALLED_APPS.
 
