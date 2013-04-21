@@ -1,16 +1,18 @@
-# django-wysiwyg-redactor
+# django-wysiwyg-redactor - A lightweight wysiwyg editor
 
 (Version modified of django-redactorjs)
 
 Some changes:
 
-* version of plugin redactorjs 7.6.3 (changes the [license](#license) too)
-* new API method `$('#redactor').getSelection()` get the selected content in editor
-* new API method `$('#redactor').getSettings()` you can get and set settings anytime you want
+* redactorjs 7.6.3 (changes the [license](#license) too)
+* new API methods 
+    * `$('#redactor').getSelection()` get the selected content in editor
+    * `$('#redactor').getSettings()` you can get and set settings anytime you want
 * removing some ajax calls, (modal windows), to avoid the crossdomain issue on production env
 * with the *extra_script* option/setting you can load some script to do something more after load the redactor
 * now the redactor toolbar is more responsive
 * fixing some bugs, adapting things...
+
 
 ## Screenshot
 
