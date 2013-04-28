@@ -1,6 +1,6 @@
 # django-wysiwyg-redactor - A lightweight wysiwyg editor
 
-(Version modified of django-redactorjs)
+(Modified version of django-redactorjs)
 
 Some changes:
 
@@ -24,7 +24,7 @@ What's that
 *django-wysiwyg-redactor is a reusable application for Django, using WYSIWYG editor http://redactorjs.com/*
 
 Dependence
------------
+----------
 
 - `Django >= 1.3` # for static files
 - `PIL` # for image upload
@@ -42,7 +42,7 @@ pip install django-wysiwyg-redactor
 
 * Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
 
-* Add default config in settings.py (more settings see: <https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings>):
+* Add default config in settings.py (more settings here: <https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings>):
 
 ```python
 REDACTOR_OPTIONS = {'lang': 'en'}
@@ -69,7 +69,7 @@ or use custom parametrs:
     )
 ```
 Using for only admin interface
------------------------------
+------------------------------
 ```python
 from django import forms
 from redactor.widgets import RedactorEditor
