@@ -49,7 +49,3 @@ class RedactorEditor(widgets.Textarea):
         id_ = final_attrs.get('id')
         html += INIT_JS % (id_, self.get_options())
         return mark_safe(html)
-
-
-# For backward compatibility
-JQueryEditor = RedactorEditor
