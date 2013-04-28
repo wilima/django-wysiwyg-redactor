@@ -1,15 +1,21 @@
 django-wysiwyg-redactor Authors
-=======================
+===============================
 
 django-redactorjs was created by Igor Tokarev based on the work of Vladimir Sidorenko.
 
   * Igor Tokarev
   * Vladimir Sidorenko
   * Guilherme Gondim
-  * Douglas Miranda
+
+Then django-wysiwyg-redactor was coded based on django-redactorjs.
+
+By Douglas Miranda - @douglasmiranda and contributors:
+
+  * Marco Bonetti - @mbi
+  * Thiago Avelino - @avelino
 
 
 Authors WYSIWYG Redactor
-------------
+------------------------
 
-<http://redactorjs.com/docs/authors/>
+<http://imperavi.com/redactor/>
