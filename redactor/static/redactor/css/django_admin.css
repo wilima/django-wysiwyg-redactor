@@ -1,6 +1,7 @@
 .redactor_box { 
   max-width: 769px;
   float: left;
+  width: 100%;
 }
 body .redactor_box_fullscreen{ max-width: none; }
 .redactor_box textarea, .redactor_box iframe { min-height: 300px; }
