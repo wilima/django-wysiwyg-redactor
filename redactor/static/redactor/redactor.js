@@ -215,6 +215,19 @@ var RTOOLBAR = {};
                             '</tr>' +
                         '</table>' +
                     '</div>' +
+                    '<span class="redactor_check">' +
+                        '<table class="redactor_ruler">' +
+                            '<tr>' +
+                                '<td>Target</td>' +
+                                '<td>' +
+                                    '<select id="redactor_target">' +
+                                        '<option value="_self" style="width: 99%; font-size: 16px;" > Self </option>' +
+                                        '<option value="_blank" style="width: 99%; font-size: 16px;" > Blank </option>' +
+                                    '</select>' +
+                                '</td>' +
+                            '</tr>' +
+                        '</table>' +
+                    '</span>' +
                 '</form>' +
                 '<span class="redactor_btns_box">' +
                 '<input type="button" id="redactor_insert_link_btn" value="%__.insert%" />&nbsp;&nbsp;' +
@@ -1914,7 +1927,7 @@ var RTOOLBAR = {};
         {
             var tab_selected = $('#redactor_tab_selected').val();
             
-            var link = '', text = '';
+            var link = '', text = '', target = '';
             
             if (tab_selected == 1) // url
             {
@@ -1931,8 +1944,10 @@ var RTOOLBAR = {};
                 link = '#' + $('#redactor_link_anchor').val();
                 text = $('#redactor_link_anchor_text').val();
             }
+            
+            target = $('#redactor_target').val();
 
-            this._insertLink('<a href="' + link + '">' +  text + '</a> ', $.trim(text), link);
+            this._insertLink('<a href="' + link + '" target="' + target + '">' +  text + '</a> ', $.trim(text), link);
 
         },
         insertLinkFile: function(data)
