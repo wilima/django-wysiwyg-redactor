@@ -8,7 +8,7 @@ f.close()
 setup(
     name='django-wysiwyg-redactor',
     version='0.3.3',
-    description='This reusable Django app using WYSIWYG editor redactorjs.com',
+    description='django-wysiwyg-redactor is a lightweight responsive wysiwyg editor for Django',
     long_description=readme,
     author="Douglas Miranda",
     author_email='douglasmirandasilva@gmail.com',
