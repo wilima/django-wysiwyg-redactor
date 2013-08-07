@@ -13,6 +13,7 @@ Some changes:
 * now the redactor toolbar is more responsive
 * fixing some bugs, adapting things...
 
+<a href="https://crate.io/packages/django-wysiwyg-redactor/"><img src="https://pypip.in/d/django-wysiwyg-redactor/badge.png"></a>
 
 ## Screenshot
 
