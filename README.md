@@ -1,6 +1,6 @@
 # django-wysiwyg-redactor - A lightweight wysiwyg editor
 
-(Modified version of django-redactorjs)
+(Modified version of django-redactorjs) <a href="https://crate.io/packages/django-wysiwyg-redactor/"><img src="https://pypip.in/d/django-wysiwyg-redactor/badge.png"></a>
 
 Some changes:
 
@@ -12,8 +12,6 @@ Some changes:
 * with the *extra_script* option/setting you can load some script to do something more after load the redactor
 * now the redactor toolbar is more responsive
 * fixing some bugs, adapting things...
-
-<a href="https://crate.io/packages/django-wysiwyg-redactor/"><img src="https://pypip.in/d/django-wysiwyg-redactor/badge.png"></a>
 
 ## Screenshot
 
