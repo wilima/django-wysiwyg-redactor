@@ -19,7 +19,8 @@ class RedactorEditor(widgets.Textarea):
 
     class Media:
         js = (
-            'redactor/jquery-1.7.min.js',
+            'redactor/jquery.min.js',
+            'redactor/jquery-migrate.min.js',
             'redactor/redactor.min.js',
         )
         css = {
