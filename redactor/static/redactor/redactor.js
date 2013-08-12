@@ -178,7 +178,7 @@ var RTOOLBAR = {};
                             '<tr>' +
                                 '<td>Target</td>' +
                                 '<td>' +
-                                    '<select id="redactor_target">' +
+                                    '<select id="redactor_link_target">' +
                                         '<option value="_self" style="width: 99%; font-size: 16px;" > Self </option>' +
                                         '<option value="_blank" style="width: 99%; font-size: 16px;" > Blank </option>' +
                                     '</select>' +
@@ -1941,7 +1941,7 @@ var RTOOLBAR = {};
                 text = $('#redactor_link_anchor_text').val();
             }
             
-            target = $('#redactor_target').val();
+            target = $('#redactor_link_target').val();
 
             this._insertLink('<a href="' + link + '" target="' + target + '">' +  text + '</a> ', $.trim(text), link);
 
