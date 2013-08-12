@@ -13,12 +13,13 @@ setup(
     author="Douglas Miranda",
     author_email='douglasmirandasilva@gmail.com',
     url='https://github.com/douglasmiranda/django-wysiwyg-redactor',
+    license='MIT',
     packages=['redactor'],
     include_package_data=True,
     install_requires=['setuptools'],
     zip_safe=False,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
@@ -26,4 +27,5 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
     ],
+    keywords='django,admin,wysiwyg,editor',
 )
