@@ -175,6 +175,15 @@ var RTOOLBAR = {};
                                 '<td>%__.text%</td>' +
                                 '<td><input class="redactor_link_text" id="redactor_link_url_text" style="width: 99%; font-size: 16px;" /></td>' +
                             '</tr>' +
+                            '<tr>' +
+                                '<td>Target</td>' +
+                                '<td>' +
+                                    '<select id="redactor_target">' +
+                                        '<option value="_self" style="width: 99%; font-size: 16px;" > Self </option>' +
+                                        '<option value="_blank" style="width: 99%; font-size: 16px;" > Blank </option>' +
+                                    '</select>' +
+                                '</td>' +
+                            '</tr>' +
                         '</table>' +
                     '</div>' +
                     '<div class="redactor_tab" id="redactor_tab2" style="display: none;">' +
@@ -215,19 +224,6 @@ var RTOOLBAR = {};
                             '</tr>' +
                         '</table>' +
                     '</div>' +
-                    '<span class="redactor_check">' +
-                        '<table class="redactor_ruler">' +
-                            '<tr>' +
-                                '<td>Target</td>' +
-                                '<td>' +
-                                    '<select id="redactor_target">' +
-                                        '<option value="_self" style="width: 99%; font-size: 16px;" > Self </option>' +
-                                        '<option value="_blank" style="width: 99%; font-size: 16px;" > Blank </option>' +
-                                    '</select>' +
-                                '</td>' +
-                            '</tr>' +
-                        '</table>' +
-                    '</span>' +
                 '</form>' +
                 '<span class="redactor_btns_box">' +
                 '<input type="button" id="redactor_insert_link_btn" value="%__.insert%" />&nbsp;&nbsp;' +
