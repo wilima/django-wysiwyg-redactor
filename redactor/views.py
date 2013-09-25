@@ -16,7 +16,8 @@ UPLOAD_PATH = getattr(settings, 'REDACTOR_UPLOAD', 'redactor/')
 @csrf_exempt
 @require_POST
 @user_passes_test(lambda u: u.is_staff)
-def redactor_upload(request, upload_to=None, form_class=ImageForm, response=lambda name, url: url):
+def redactor_upload(request, upload_to=None, form_class=ImageForm,
+                    response=lambda name, url: url):
     form = form_class(request.POST, request.FILES)
     if form.is_valid():
         file_ = form.cleaned_data['file']
