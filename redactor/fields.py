@@ -11,9 +11,9 @@ class RedactorField(Field):
         allow_file_upload = kwargs.pop('allow_file_upload', True)
         allow_image_upload = kwargs.pop('allow_image_upload', True)
         self.widget = RedactorEditor(
-            redactor_options=options, 
-            upload_to=upload_to, 
-            allow_file_upload=allow_file_upload, 
+            redactor_options=options,
+            upload_to=upload_to,
+            allow_file_upload=allow_file_upload,
             allow_image_upload=allow_image_upload
         )
         super(RedactorField, self).__init__(*args, **kwargs)
