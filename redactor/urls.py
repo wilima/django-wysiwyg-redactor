@@ -1,8 +1,8 @@
 try:
-    from django.conf.urls import url, patterns, include
+    from django.conf.urls import url, patterns
 except ImportError:
     # for Django version less than 1.4
-    from django.conf.urls.defaults import url, patterns, include
+    from django.conf.urls.defaults import url, patterns
 
 from redactor.views import redactor_upload
 from redactor.forms import FileForm, ImageForm
