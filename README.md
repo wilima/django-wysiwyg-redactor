@@ -89,6 +89,14 @@ class EntryAdmin(admin.ModelAdmin):
 
 `RedactorEditor` takes the same parameters as `RedactorField`
 
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request =]
+
 ## License 
 Starting with version 7.6.3 redactor-js is licensed under [Creative Commons Attribution-NonCommercial 3.0 license](http://creativecommons.org/licenses/by-nc/3.0/)
 
