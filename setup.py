@@ -27,5 +27,5 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
     ],
-    keywords='django,admin,wysiwyg,editor',
+    keywords='django,admin,wysiwyg,editor,redactor,redactorjs',
 )
