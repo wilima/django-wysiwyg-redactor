@@ -1,7 +1,5 @@
 # A lightweight wysiwyg editor for Django
 
-<a href="https://crate.io/packages/django-wysiwyg-redactor/"><img src="https://pypip.in/d/django-wysiwyg-redactor/badge.png"></a>
-
 Some changes:
 
 * redactorjs 7.6.3 (changes the [license](#license) too)
