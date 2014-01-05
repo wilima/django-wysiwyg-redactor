@@ -20,7 +20,7 @@ Screenshot
 What's that
 -----------------
 
-*django-wysiwyg-redactor is a reusable application for Django, using .. _Redactor WYSIWYG editor: http://redactorjs.com/.*
+*django-wysiwyg-redactor* is a reusable application for Django, using `Redactor WYSIWYG editor <http://redactorjs.com/>`_
 
 Dependence
 -----------------
@@ -33,62 +33,59 @@ Getting started
 
 - Install *django-wysiwyg-redactor*:
 
-```
-pip install django-wysiwyg-redactor
-```
+```pip install django-wysiwyg-redactor```
 
 - Add `'redactor'` to INSTALLED_APPS.
 
 - Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
 
-- Add default config in settings.py (fot more settings, see .. _here: https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings)
+- Add default config in settings.py (fot more settings, see `here <https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings>`_)
 
-``` python
+```
 REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads/'
 ```
 
 
+
 Using in model
 -----------------
+this:
+::
+ from django.db import models
+ from redactor.fields import RedactorField
 
-``` python
-    from django.db import models
-    from redactor.fields import RedactorField
-
-    class Entry(models.Model):
-        title = models.CharField(max_length=250, verbose_name=u'Title')
-        short_text = RedactorField(verbose_name=u'Text')
-```
+ class Entry(models.Model):
+     title = models.CharField(max_length=250, verbose_name=u'Title')
+     short_text = RedactorField(verbose_name=u'Text')
 
 or use custom parametrs:
-``` python
-    short_text = RedactorField(
-        verbose_name=u'Text',
-        redactor_options={'lang': 'en', 'focus': 'true'},
-        upload_to='tmp/',
-        allow_file_upload=True,
-        allow_image_upload=True
-    )
-```
+::
+ short_text = RedactorField(
+     verbose_name=u'Text',
+     redactor_options={'lang': 'en', 'focus': 'true'},
+     upload_to='tmp/',
+     allow_file_upload=True,
+     allow_image_upload=True
+ )
 
 Using for only admin interface
 ------------------------------
-``` python
-    from django import forms
-    from redactor.widgets import RedactorEditor
-    from blog.models import Entry
+this:
+::
+ from django import forms
+ from redactor.widgets import RedactorEditor
+ from blog.models import Entry
 
-    class EntryAdminForm(forms.ModelForm):
-        class Meta:
-            model = Entry
-            widgets = {
-               'short_text': RedactorEditor(),
-            }
+ class EntryAdminForm(forms.ModelForm):
+     class Meta:
+         model = Entry
+         widgets = {
+             'short_text': RedactorEditor(),
+         }
 
     class EntryAdmin(admin.ModelAdmin):
         form = EntryAdminForm
-```
 
 `RedactorEditor` takes the same parameters as `RedactorField`
 
@@ -103,6 +100,6 @@ Contributing
 
 License
 -----------------
-Starting with version 7.6.3 redactor-js is licensed under .. _Creative Commons Attribution-NonCommercial 3.0 license: http://creativecommons.org/licenses/by-nc/3.0/
+Starting with version 7.6.3 redactor-js is licensed under `Creative Commons Attribution-NonCommercial 3.0 license <http://creativecommons.org/licenses/by-nc/3.0/>`_
 
-If you want to use a newer version please buy license .. _here: http://imperavi.com/redactor/download
+If you want to use a newer version please buy license `here <http://imperavi.com/redactor/download>`_
