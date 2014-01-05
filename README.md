@@ -1,64 +1,68 @@
-# A lightweight wysiwyg editor for Django
+A lightweight wysiwyg editor for Django
+=======================================
 
 Some changes:
 
-* redactorjs 7.6.3 (changes the [license](#license) too)
-* new API methods 
-    * `$('#redactor').getSelection()` get the selected content in editor
-    * `$('#redactor').getSettings()` you can get and set settings anytime you want
-* removing some ajax calls, (modal windows), to avoid the crossdomain issue on production env
-* with the *extra_script* option/setting you can load some script to do something more after load the redactor
-* now the redactor toolbar is more responsive
-* fixing some bugs, adapting things...
+- redactorjs 7.6.3 (changes the [license](#license) too)
+- new API methods 
+    - `$('#redactor').getSelection()` get the selected content in editor
+    - `$('#redactor').getSettings()` you can get and set settings anytime you want
+- removing some ajax calls, (modal windows), to avoid the crossdomain issue on production env
+- with the *extra_script* option/setting you can load some script to do something more after load the redactor
+- now the redactor toolbar is more responsive
+- fixing some bugs, adapting things...
 
-## Screenshot
+Screenshot
+-----------------
 
-<img src="https://raw.github.com/douglasmiranda/django-wysiwyg-redactor/master/static/img/screenshot.png">
+.. image:: https://raw.github.com/douglasmiranda/django-wysiwyg-redactor/master/static/img/screenshot.png
 
 What's that
------------
+-----------------
 
-*django-wysiwyg-redactor is a reusable application for Django, using WYSIWYG editor http://redactorjs.com/*
+*django-wysiwyg-redactor is a reusable application for Django, using .. _Redactor WYSIWYG editor: http://redactorjs.com/.*
 
 Dependence
-----------
+-----------------
 
 - `Django >= 1.3` # for static files
 - `PIL` # for image upload
 
 Getting started
----------------
+-----------------
 
-* Install django-wysiwyg-redactor:
+- Install *django-wysiwyg-redactor*:
 
 ```
 pip install django-wysiwyg-redactor
 ```
 
-* Add `'redactor'` to INSTALLED_APPS.
+- Add `'redactor'` to INSTALLED_APPS.
 
-* Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
+- Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
 
-* Add default config in settings.py (more settings here: <https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings>):
+- Add default config in settings.py (fot more settings, see .. _here: https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings)
 
-```python
+``` python
 REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads/'
 ```
 
+
 Using in model
---------------
+-----------------
 
-```python
-from django.db import models
-from redactor.fields import RedactorField
+``` python
+    from django.db import models
+    from redactor.fields import RedactorField
 
-class Entry(models.Model):
-    title = models.CharField(max_length=250, verbose_name=u'Title')
-    short_text = RedactorField(verbose_name=u'Text')
+    class Entry(models.Model):
+        title = models.CharField(max_length=250, verbose_name=u'Title')
+        short_text = RedactorField(verbose_name=u'Text')
 ```
+
 or use custom parametrs:
-```python
+``` python
     short_text = RedactorField(
         verbose_name=u'Text',
         redactor_options={'lang': 'en', 'focus': 'true'},
@@ -67,27 +71,29 @@ or use custom parametrs:
         allow_image_upload=True
     )
 ```
+
 Using for only admin interface
 ------------------------------
-```python
-from django import forms
-from redactor.widgets import RedactorEditor
-from blog.models import Entry
+``` python
+    from django import forms
+    from redactor.widgets import RedactorEditor
+    from blog.models import Entry
 
-class EntryAdminForm(forms.ModelForm):
-    class Meta:
-        model = Entry
-        widgets = {
-           'short_text': RedactorEditor(),
-        }
+    class EntryAdminForm(forms.ModelForm):
+        class Meta:
+            model = Entry
+            widgets = {
+               'short_text': RedactorEditor(),
+            }
 
-class EntryAdmin(admin.ModelAdmin):
-    form = EntryAdminForm
+    class EntryAdmin(admin.ModelAdmin):
+        form = EntryAdminForm
 ```
 
 `RedactorEditor` takes the same parameters as `RedactorField`
 
-## Contributing
+Contributing
+-----------------
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
@@ -95,7 +101,8 @@ class EntryAdmin(admin.ModelAdmin):
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request =]
 
-## License 
-Starting with version 7.6.3 redactor-js is licensed under [Creative Commons Attribution-NonCommercial 3.0 license](http://creativecommons.org/licenses/by-nc/3.0/)
+License
+-----------------
+Starting with version 7.6.3 redactor-js is licensed under .. _Creative Commons Attribution-NonCommercial 3.0 license: http://creativecommons.org/licenses/by-nc/3.0/
 
-If you want to use a newer version please buy license here: http://imperavi.com/redactor/download
+If you want to use a newer version please buy license .. _here: http://imperavi.com/redactor/download
