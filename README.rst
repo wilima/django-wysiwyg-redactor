@@ -98,6 +98,16 @@ Contributing
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request =]
 
+History
+-------
+-  0.3.8.1 Feb 13, 2014
+
+   -   Fix: Solve Deprecation of 'simplejson' ( pull #25 )
+
+-  previous versions
+
+   -   Lots of fixes, see the commits.
+
 License
 -----------------
 Starting with version 7.6.3 redactor-js is licensed under `Creative Commons Attribution-NonCommercial 3.0 license <http://creativecommons.org/licenses/by-nc/3.0/>`_
