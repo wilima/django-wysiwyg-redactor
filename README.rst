@@ -100,6 +100,10 @@ Contributing
 
 History
 -------
+-  0.3.8.2 Feb 14, 2014
+
+   -   Improvement: Rename uploaded image by dint of uuid ( pull #33 )
+
 -  0.3.8.1 Feb 13, 2014
 
    -   Fix: Solve Deprecation of 'simplejson' ( pull #25 )
