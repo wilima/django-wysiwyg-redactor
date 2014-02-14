@@ -108,6 +108,10 @@ History
 
    -   Lots of fixes, see the commits.
 
+Who is behind this?
+-------------------
+Awesome people, you should see the `AUTHORS <https://github.com/douglasmiranda/django-wysiwyg-redactor/blob/master/AUTHORS>`_ file.
+
 License
 -----------------
 Starting with version 7.6.3 redactor-js is licensed under `Creative Commons Attribution-NonCommercial 3.0 license <http://creativecommons.org/licenses/by-nc/3.0/>`_
