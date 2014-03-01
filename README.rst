@@ -81,11 +81,11 @@ this:
      class Meta:
          model = Entry
          widgets = {
-             'short_text': RedactorEditor(),
+            'short_text': RedactorEditor(),
          }
 
-    class EntryAdmin(admin.ModelAdmin):
-        form = EntryAdminForm
+     class EntryAdmin(admin.ModelAdmin):
+         form = EntryAdminForm
 
 `RedactorEditor` takes the same parameters as `RedactorField`
 
