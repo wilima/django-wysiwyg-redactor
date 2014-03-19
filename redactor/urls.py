@@ -15,7 +15,7 @@ urlpatterns = patterns(
             'form_class': ImageForm,
             'response': lambda name, url: '<img src="{0}" alt="{1}" />'.format(
                 url,
-                name
+                name.encode('utf-8')
             ),
         },
         name='redactor_upload_image'),
