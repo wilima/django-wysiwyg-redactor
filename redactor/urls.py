@@ -23,8 +23,10 @@ urlpatterns = patterns(
     url('^upload/file/(?P<upload_to>.*)', redactor_upload,
         {
             'form_class': FileForm,
-            'response': lambda name, url: '<a href="{0}">{1}</a>'.format(url,
-                                                                         name),
+            'response': lambda name, url: '<a href="{0}">{1}</a>'.format(
+                url,
+                name.encode('utf-8')
+            ),
         },
         name='redactor_upload_file'),
 )
