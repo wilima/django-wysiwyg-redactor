@@ -1,31 +1,29 @@
-import os
-import uuid
-
 from django.conf import settings
-from django.contrib.auth.decorators import user_passes_test
-from django.core.files.storage import default_storage
 from django.http import HttpResponse
+from django.views.generic import FormView
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
-
 from redactor.forms import ImageForm
+from redactor.utils import import_class
 
 
-UPLOAD_PATH = getattr(settings, 'REDACTOR_UPLOAD', 'redactor/')
+class RedactorUploadView(FormView):
+    form_class = ImageForm
+    http_method_names = ('post',)
+    upload_to = getattr(settings, 'REDACTOR_UPLOAD', 'redactor/')
+    upload_handler = getattr(settings, 'REDACTOR_UPLOAD_HANDLER', 'redactor.handlers.SimpleUploader')
+    response = lambda name, url: url
 
+    @method_decorator(csrf_exempt)
+    @method_decorator(staff_member_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(RedactorUploadView, self).dispatch(request, *args, **kwargs)
 
-@csrf_exempt
-@require_POST
-@user_passes_test(lambda u: u.is_staff)
-def redactor_upload(request, upload_to=None, form_class=ImageForm,
-                    response=lambda name, url: url):
-    form = form_class(request.POST, request.FILES)
-    if form.is_valid():
+    def form_valid(self, form):
         file_ = form.cleaned_data['file']
-        filename = "%s.%s" % (uuid.uuid4(), file_.name.split('.')[-1])
-        path = os.path.join(upload_to or UPLOAD_PATH, filename)
-        real_path = default_storage.save(path, file_)
-        return HttpResponse(
-            response(filename, default_storage.url(real_path))
-        )
-    return HttpResponse(status=403)
+        handler_class = import_class(self.upload_handler)
+        uploader = handler_class(file_)
+        uploader.save_file()
+
+        return HttpResponse(self.response(uploader.get_filename(), uploader.get_url()))

@@ -1,4 +1,3 @@
-#-*- coding: utf-8 -*-
 from django.db.models import Field
 from redactor.widgets import RedactorEditor
 from django.conf import settings
