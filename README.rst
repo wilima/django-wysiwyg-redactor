@@ -41,51 +41,53 @@ Getting started
 
 - Add default config in settings.py (fot more settings, see `here <https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings>`_)
 
-```
-REDACTOR_OPTIONS = {'lang': 'en'}
-REDACTOR_UPLOAD = 'uploads/'
-```
+.. code-block:: python
+
+    REDACTOR_OPTIONS = {'lang': 'en'}
+    REDACTOR_UPLOAD = 'uploads/'
 
 
 
 Using in model
 --------------
 this:
-::
- from django.db import models
- from redactor.fields import RedactorField
+.. code-block:: python
 
- class Entry(models.Model):
-     title = models.CharField(max_length=250, verbose_name=u'Title')
-     short_text = RedactorField(verbose_name=u'Text')
+    from django.db import models
+    from redactor.fields import RedactorField
+
+    class Entry(models.Model):
+        title = models.CharField(max_length=250, verbose_name=u'Title')
+        short_text = RedactorField(verbose_name=u'Text')
 
 or use custom parametrs:
-::
- short_text = RedactorField(
-     verbose_name=u'Text',
-     redactor_options={'lang': 'en', 'focus': 'true'},
-     upload_to='tmp/',
-     allow_file_upload=True,
-     allow_image_upload=True
- )
+.. code-block:: python
+
+    short_text = RedactorField(
+        verbose_name=u'Text',
+        redactor_options={'lang': 'en', 'focus': 'true'},
+        upload_to='tmp/',
+        allow_file_upload=True,
+        allow_image_upload=True
+    )
 
 Using for only admin interface
 ------------------------------
 this:
-::
- from django import forms
- from redactor.widgets import RedactorEditor
- from blog.models import Entry
+.. code-block:: python
+    from django import forms
+    from redactor.widgets import RedactorEditor
+    from blog.models import Entry
 
- class EntryAdminForm(forms.ModelForm):
-     class Meta:
-         model = Entry
-         widgets = {
-            'short_text': RedactorEditor(),
-         }
+    class EntryAdminForm(forms.ModelForm):
+        class Meta:
+            model = Entry
+            widgets = {
+               'short_text': RedactorEditor(),
+            }
 
-     class EntryAdmin(admin.ModelAdmin):
-         form = EntryAdminForm
+        class EntryAdmin(admin.ModelAdmin):
+            form = EntryAdminForm
 
 `RedactorEditor` takes the same parameters as `RedactorField`
 
@@ -98,8 +100,7 @@ UUIDUploader - This handler will replace the original file name for an UUID.
 
 DateDirectoryUploader - This handler saves the file in a directory based on the current server date.
 
-Upload handlers usage
-=====================
+Usage:
 
 For example, if I want to use the DateDirectoryUploader handler, I will put this on settings.py:
 
