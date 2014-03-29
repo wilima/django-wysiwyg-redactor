@@ -9,20 +9,10 @@ GLOBAL_OPTIONS = getattr(settings, 'REDACTOR_OPTIONS', {})
 
 
 class RedactorEditor(widgets.Textarea):
-    init_js = '<script type="text/javascript">jQuery(document).ready(function(){$("#%s").redactor(%s);});</script>'
-
-    class Media:
-        js = (
-            'redactor/jquery.min.js',
-            'redactor/jquery-migrate.min.js',
-            'redactor/redactor.min.js',
-        )
-        css = {
-            'all': (
-                'redactor/css/redactor.css',
-                'redactor/css/django_admin.css',
-            )
-        }
+    init_js = '''<script type="text/javascript"> 
+                 jQuery(document).ready(function(){$("#%s").redactor(%s);});
+                 </script>
+              '''
 
     def __init__(self, *args, **kwargs):
         self.upload_to = kwargs.pop('upload_to', '')
@@ -52,3 +42,16 @@ class RedactorEditor(widgets.Textarea):
         id_ = final_attrs.get('id')
         html += self.init_js % (id_, self.get_options())
         return mark_safe(html)
+
+    class Media:
+        js = (
+            'redactor/jquery.min.js',
+            'redactor/jquery-migrate.min.js',
+            'redactor/redactor.min.js',
+        )
+        css = {
+            'all': (
+                'redactor/css/redactor.css',
+                'redactor/css/django_admin.css',
+            )
+        }

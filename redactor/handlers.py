@@ -32,7 +32,8 @@ class BaseUploaderRedactor(object):
         Save file and return real path
         """
         if not hasattr(self, 'real_path'):
-            self.real_path = default_storage.save(self.get_full_path(), self.get_file())
+            self.real_path = default_storage.save(self.get_full_path(),
+                                                  self.get_file())
         return self.real_path
 
     def get_url(self):
@@ -79,8 +80,10 @@ class UUIDUploader(SimpleUploader):
     /REDACTOR_UPLOAD/546de5b5-cf05-4b47-9379-3f964732b802.etc
     """
     def get_filename(self):
-        if not hasattr(self, 'filename'):  # save filename prevents the generation of a new
-            self.filename = "%s.%s" % (uuid.uuid4(), self.upload_file.name.split('.')[-1])
+        if not hasattr(self, 'filename'):
+            # save filename prevents the generation of a new
+            extension = self.upload_file.name.split('.')[-1]
+            self.filename = '{0}.{1}'.format(uuid.uuid4(), extension)
         return self.filename
 
 
