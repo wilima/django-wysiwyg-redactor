@@ -91,7 +91,7 @@ var RTOOLBAR = {};
 
             modal_image: '' +
                 '<div id="redactor_tabs">' +
-                   '<a href="javascript:void(null);" class="redactor_tabs_act">%__.upload%</a>' +   
+                   '<a href="javascript:void(null);" class="redactor_tabs_act">%__.upload%</a> ' +   
                    '<a href="javascript:void(null);">%__.choose%</a> '+
                    '<a href="javascript:void(null);">%__.link%</a> '+ 
                 '</div>' +
