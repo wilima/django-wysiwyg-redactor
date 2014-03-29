@@ -26,4 +26,4 @@ class RedactorUploadView(FormView):
         uploader = handler_class(file_)
         uploader.save_file()
 
-        return HttpResponse(self.response(uploader.get_filename(), uploader.get_url()))
+        return HttpResponse(self.response(uploader.get_filename().encode('utf-8'), uploader.get_url()))
