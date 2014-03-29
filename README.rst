@@ -50,7 +50,7 @@ Getting started
 
 Using in model
 --------------
-this:
+
 .. code-block:: python
 
     from django.db import models
@@ -61,6 +61,7 @@ this:
         short_text = RedactorField(verbose_name=u'Text')
 
 or use custom parametrs:
+
 .. code-block:: python
 
     short_text = RedactorField(
@@ -73,7 +74,7 @@ or use custom parametrs:
 
 Using for only admin interface
 ------------------------------
-this:
+
 .. code-block:: python
     from django import forms
     from redactor.widgets import RedactorEditor
