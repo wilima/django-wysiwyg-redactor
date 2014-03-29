@@ -123,6 +123,11 @@ Contributing
 
 History
 -------
+-  0.3.9 Mar 29, 2014
+
+   -   New Feature: Upload Handler (pull #43) Special Thanks to @SilentSokolov
+   -   Fix unicode filename issue.
+
 -  0.3.8.2 Feb 14, 2014
 
    -   Improvement: Rename uploaded image by dint of uuid ( pull #33 )
