@@ -1,6 +1,10 @@
 A lightweight wysiwyg editor for Django
 =======================================
 
+.. image:: https://pypip.in/download/django-wysiwyg-redactor/badge.png
+    :target: https://pypi.python.org/pypi/django-wysiwyg-redactor/
+    :alt: Downloads
+
 Some changes:
 
 - redactorjs 7.6.3 (changes the [license](#license) too)
