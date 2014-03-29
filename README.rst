@@ -90,12 +90,25 @@ this:
 `RedactorEditor` takes the same parameters as `RedactorField`
 
 
-Upload handlers
+Upload Handlers
 ---------------
-`SimpleUploader` - Standard uploader
-`UUIDUploader` - Handler that renames files based on UUID
-`DateDirectoryUploader` - Handler  that saves files in a directory based on the current date
+SimpleUploader - The Standard Uploader. Will upload your file to REDACTOR_UPLOAD.
 
+UUIDUploader - This handler will replace the original file name for an UUID.
+
+DateDirectoryUploader - This handler saves the file in a directory based on the current server date.
+
+Upload handlers usage
+=====================
+
+For example, if I want to use the DateDirectoryUploader handler, I will put this on settings.py:
+
+.. code-block:: python
+
+    REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
+
+
+NOTE: Soon we will have a better documentation.
 
 Contributing
 ------------
