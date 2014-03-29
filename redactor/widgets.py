@@ -1,21 +1,15 @@
+import json
 from django.forms import widgets
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
-import json
 from django.conf import settings
 
 
 GLOBAL_OPTIONS = getattr(settings, 'REDACTOR_OPTIONS', {})
 
-INIT_JS = """<script type="text/javascript">
-  jQuery(document).ready(function(){
-    $("#%s").redactor(%s);
-  });
-</script>
-"""
-
 
 class RedactorEditor(widgets.Textarea):
+    init_js = '<script type="text/javascript">jQuery(document).ready(function(){$("#%s").redactor(%s);});</script>'
 
     class Media:
         js = (
@@ -56,5 +50,5 @@ class RedactorEditor(widgets.Textarea):
         html = super(RedactorEditor, self).render(name, value, attrs)
         final_attrs = self.build_attrs(attrs)
         id_ = final_attrs.get('id')
-        html += INIT_JS % (id_, self.get_options())
+        html += self.init_js % (id_, self.get_options())
         return mark_safe(html)

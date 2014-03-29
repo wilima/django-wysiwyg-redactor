@@ -13,7 +13,7 @@ Some changes:
 - fixing some bugs, adapting things...
 
 Screenshot
------------------
+----------
 
 .. image:: https://raw.github.com/douglasmiranda/django-wysiwyg-redactor/master/static/img/screenshot.png
 
@@ -23,13 +23,13 @@ What's that
 *django-wysiwyg-redactor* is a reusable application for Django, using `Redactor WYSIWYG editor <http://redactorjs.com/>`_
 
 Dependence
------------------
+----------
 
 - `Django >= 1.3` # for static files
 - `PIL` # for image upload
 
 Getting started
------------------
+---------------
 
 - Install *django-wysiwyg-redactor*:
 
@@ -49,7 +49,7 @@ REDACTOR_UPLOAD = 'uploads/'
 
 
 Using in model
------------------
+--------------
 this:
 ::
  from django.db import models
@@ -89,8 +89,16 @@ this:
 
 `RedactorEditor` takes the same parameters as `RedactorField`
 
+
+Upload handlers
+---------------
+`SimpleUploader` - Standard uploader
+`UUIDUploader` - Handler that renames files based on UUID
+`DateDirectoryUploader` - Handler  that saves files in a directory based on the current date
+
+
 Contributing
------------------
+------------
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
@@ -117,7 +125,7 @@ Who is behind this?
 Awesome people, you should see the `AUTHORS <https://github.com/douglasmiranda/django-wysiwyg-redactor/blob/master/AUTHORS>`_ file.
 
 License
------------------
+-------
 Starting with version 7.6.3 redactor-js is licensed under `Creative Commons Attribution-NonCommercial 3.0 license <http://creativecommons.org/licenses/by-nc/3.0/>`_
 
 If you want to use a newer version please buy license `here <http://imperavi.com/redactor/download>`_
