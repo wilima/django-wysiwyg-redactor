@@ -2,7 +2,7 @@ import os
 import uuid
 import datetime
 from django.conf import settings
-from django.core.files.storage import default_storage
+from redactor.utils import import_class
 
 
 class BaseUploaderRedactor(object):
@@ -13,6 +13,10 @@ class BaseUploaderRedactor(object):
     def __init__(self, upload_file, upload_to=None):
         self.upload_file = upload_file
         self.upload_to = upload_to
+
+        file_storage_class = getattr(settings, 'REDACTOR_FILE_STORAGE',
+                                     'django.core.files.storage.default_storage')
+        self.file_storage = import_class(file_storage_class)
 
     def get_file(self):
         """
@@ -32,7 +36,7 @@ class BaseUploaderRedactor(object):
         Save file and return real path
         """
         if not hasattr(self, 'real_path'):
-            self.real_path = default_storage.save(self.get_full_path(),
+            self.real_path = self.file_storage.save(self.get_full_path(),
                                                   self.get_file())
         return self.real_path
 
@@ -43,7 +47,7 @@ class BaseUploaderRedactor(object):
         if not hasattr(self, 'real_path'):
             return None
         else:
-            return default_storage.url(self.real_path)
+            return self.file_storage.url(self.real_path)
 
     def get_filename(self):
         """
