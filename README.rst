@@ -114,6 +114,21 @@ For example, if I want to use the DateDirectoryUploader handler, I will put this
     REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
 
+File Storages
+-------------
+*django-wysiwyg-redactor* defaults to using the default media storage for your Django application.
+
+This can be overriden to use a different storage backend with this settings.py variable:
+
+.. code-block::
+
+    REDACTOR_FILE_STORAGE = 'my_site.file_storages.storage_instance'
+
+Information on writing a custom storage backend is `here in the Django documentation <https://docs.djangoproject.com/en/1.7/howto/custom-file-storage/>`_.
+
+Other third-party libraries exist to provide storage backends for cloud object storages (e.g. `django-cumulus <https://github.com/django-cumulus/django-cumulus/>`_ for Rackspace/OpenStack or `django-storages <http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html>`_ for Amazon S3).
+
+
 NOTE: Soon we will have a better documentation.
 
 Contributing
