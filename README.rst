@@ -142,6 +142,10 @@ Contributing
 
 History
 -------
+-  0.3.9.1 Jun 06, 2014
+
+   -   Added: Support for custom REDACTOR_FILE_STORAGE ( pull #45 #46 ) Thanks to @pztrick
+
 -  0.3.9 Mar 29, 2014
 
    -   New Feature: Upload Handler (pull #43) Special Thanks to @SilentSokolov
