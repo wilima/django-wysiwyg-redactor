@@ -1,3 +1,10 @@
+WARNING
+=======
+
+Thanks to @etchalon (Mess Marketing) we will have a major change in django-wysiwyg-redactor 0.4.
+
+I'm working localhost and will be released soon.
+
 A lightweight wysiwyg editor for Django
 =======================================
 
