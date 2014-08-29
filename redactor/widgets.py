@@ -1,4 +1,5 @@
 import json
+from django import forms
 from django.forms import widgets
 from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
@@ -9,8 +10,15 @@ GLOBAL_OPTIONS = getattr(settings, 'REDACTOR_OPTIONS', {})
 
 
 class RedactorEditor(widgets.Textarea):
-    init_js = '''<script type="text/javascript"> 
-                 jQuery(document).ready(function(){$("#%s").redactor(%s);});
+    init_js = '''<script type="text/javascript">
+                    jQuery(document).ready(function(){
+                        var $field = jQuery("#%s");
+                        options = %s;
+                        options.imageUploadErrorCallback = function(json){
+                            alert(json.error);
+                        };
+                        $field.redactor(options);
+                    });
                  </script>
               '''
 
@@ -43,11 +51,11 @@ class RedactorEditor(widgets.Textarea):
         html += self.init_js % (id_, self.get_options())
         return mark_safe(html)
 
-    class Media:
+    def _media(self):
         js = (
-            'redactor/jquery.min.js',
-            'redactor/jquery-migrate.min.js',
-            'redactor/redactor.min.js',
+            'redactor/jquery.redactor.init.js',
+            'redactor/redactor.js',
+            'redactor/langs/{0}.js'.format(GLOBAL_OPTIONS.get('lang', 'en')),
         )
         css = {
             'all': (
@@ -55,3 +63,5 @@ class RedactorEditor(widgets.Textarea):
                 'redactor/css/django_admin.css',
             )
         }
+        return forms.Media(css=css, js=js)
+    media = property(_media)

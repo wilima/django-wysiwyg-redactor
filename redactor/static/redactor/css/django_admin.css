@@ -9,3 +9,16 @@ body .redactor_box_fullscreen{ max-width: none; }
 #redactor_tabs { padding-left: 0; }
 
 .field-content label { display: none; }
+
+.redactor_box li,
+.redactor_toolbar li {
+    font-size: 14px;
+}
+.form-row .redactor_box p {
+    font-size: 14px;
+    margin-left: 0;
+    padding-left: 0;
+}
+form .redactor_box ul {
+    margin-left: 0;
+}
