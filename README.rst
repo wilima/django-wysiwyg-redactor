@@ -92,7 +92,7 @@ Using for only admin interface
         class EntryAdmin(admin.ModelAdmin):
             form = EntryAdminForm
 
-`RedactorEditor` takes the same parameters as `RedactorField`
+`RedactorEditor` takes the same parameters as `RedactorField`.
 
 
 Upload Handlers
@@ -142,7 +142,7 @@ History
 -------
 -  0.4 x x, 2014 (Feedback needed)
 
-   -   Great news, now we have an sponsor, wich means we can use a up-to-date version of redactorjs. Thanks to @etchalon.
+   -   Great news, now we have an sponsor, which means we can use a up-to-date version of redactorjs. Thanks to @etchalon.
 
 -  0.3.9.1 Jun 06, 2014
 
