@@ -1,6 +1,8 @@
 WARNING
 =======
 
+`Feedback needed <https://github.com/douglasmiranda/django-wysiwyg-redactor/issues/49>`_ before release.
+
 Thanks to @etchalon (Mess Marketing) we will have a major change in django-wysiwyg-redactor 0.4.
 
 I'm working localhost and will be released soon.
@@ -140,7 +142,7 @@ Contributing
 
 History
 -------
--  0.4 x x, 2014 (Feedback needed)
+-  0.4 x x, 2014 (`Feedback needed <https://github.com/douglasmiranda/django-wysiwyg-redactor/issues/49>`_)
 
    -   Great news, now we have an sponsor, which means we can use a up-to-date version of redactorjs. Thanks to @etchalon.
 
