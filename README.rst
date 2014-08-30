@@ -12,32 +12,23 @@ A lightweight wysiwyg editor for Django
     :target: https://pypi.python.org/pypi/django-wysiwyg-redactor/
     :alt: Downloads
 
-Some changes:
-
-- redactorjs 7.6.3 (changes the [license](#license) too)
-- new API methods 
-    - `$('#redactor').getSelection()` get the selected content in editor
-    - `$('#redactor').getSettings()` you can get and set settings anytime you want
-- removing some ajax calls, (modal windows), to avoid the crossdomain issue on production env
-- with the *extra_script* option/setting you can load some script to do something more after load the redactor
-- now the redactor toolbar is more responsive
-- fixing some bugs, adapting things...
-
 Screenshot
 ----------
 
-.. image:: https://raw.github.com/douglasmiranda/django-wysiwyg-redactor/master/static/img/screenshot.png
+.. image:: https://raw.githubusercontent.com/douglasmiranda/django-wysiwyg-redactor/master/screenshots/redactor.jpg
 
 What's that
 -----------------
 
 *django-wysiwyg-redactor* is a reusable application for Django, using `Redactor WYSIWYG editor <http://redactorjs.com/>`_
 
+Sponsored by `Mess Marketing <http://www.thisismess.com>`_, we use the latest version of redactorjs, always up-to-date.
+
 Dependence
 ----------
 
 - `Django >= 1.3` # for static files
-- `PIL` # for image upload
+- `Pillow or PIL` # for image upload
 
 Getting started
 ---------------
@@ -50,14 +41,14 @@ Getting started
 
 - Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
 
-- Add default config in settings.py (fot more settings, see `here <https://github.com/douglasmiranda/django-wysiwyg-redactor/wiki/Settings>`_)
+- Add default config in settings.py
 
 .. code-block:: python
 
     REDACTOR_OPTIONS = {'lang': 'en'}
     REDACTOR_UPLOAD = 'uploads/'
 
-
+More `redactor settings <http://imperavi.com/redactor/docs/settings/>`_.
 
 Using in model
 --------------
@@ -149,6 +140,10 @@ Contributing
 
 History
 -------
+-  0.4 x x, 2014 (Feedback needed)
+
+   -   Great news, now we have an sponsor, wich means we can use a up-to-date version of redactorjs. Thanks to @etchalon.
+
 -  0.3.9.1 Jun 06, 2014
 
    -   Added: Support for custom REDACTOR_FILE_STORAGE ( pull #45 #46 ) Thanks to @pztrick
@@ -173,6 +168,13 @@ History
 Who is behind this?
 -------------------
 Awesome people, you should see the `AUTHORS <https://github.com/douglasmiranda/django-wysiwyg-redactor/blob/master/AUTHORS>`_ file.
+
+And our awesome sponsor:
+
+Mess Marketing from Chicago, IL
+jshedd@thisismess.com
+thisismess.com
+@etchalon
 
 License
 -------
