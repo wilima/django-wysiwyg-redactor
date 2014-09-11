@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.encoding import force_str
 
 from redactor.forms import ImageForm
-from redactor.utils import import_class
+from redactor.utils import import_class, is_module_image_installed
 
 
 class RedactorUploadView(FormView):
@@ -22,6 +22,13 @@ class RedactorUploadView(FormView):
     @method_decorator(csrf_exempt)
     @method_decorator(staff_member_required)
     def dispatch(self, request, *args, **kwargs):
+        if not is_module_image_installed():
+            data = {
+                'error': _("ImproperlyConfigured: Neither Pillow nor PIL could be imported: No module named 'Image'"),
+            }
+            return HttpResponse(json.dumps(data),
+                                content_type='application/json')
+
         return super(RedactorUploadView, self).dispatch(request, *args,
                                                         **kwargs)
 

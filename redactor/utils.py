@@ -21,3 +21,16 @@ def import_class(path):
         raise ImportError(message)
 
     return getattr(module_itself, class_name)
+
+
+def is_module_image_installed():
+    try:
+        from PIL import Image
+        from PIL import ImageFile
+    except ImportError:
+        try:
+            import Image
+            import ImageFile
+        except ImportError:
+            return False
+    return True
