@@ -1,12 +1,3 @@
-WARNING
-=======
-
-`Feedback needed <https://github.com/douglasmiranda/django-wysiwyg-redactor/issues/49>`_ before release.
-
-Thanks to @etchalon (Mess Marketing) we will have a major change in django-wysiwyg-redactor 0.4.
-
-I'm working localhost and will be released soon.
-
 A lightweight wysiwyg editor for Django
 =======================================
 
@@ -142,9 +133,12 @@ Contributing
 
 History
 -------
--  0.4 x x, 2014 (`Feedback needed <https://github.com/douglasmiranda/django-wysiwyg-redactor/issues/49>`_)
+-  0.4.0 sep 11, 2014
 
-   -   Great news, now we have an sponsor, which means we can use a up-to-date version of redactorjs. Thanks to @etchalon.
+   -   Great news, now we have an sponsor, which means we can use a up-to-date version of redactorjs. Thanks to @etchalon. ( pull #48 )
+   -   Working with python3.4
+   -   Update LICENSE
+   -   Better error handling
 
 -  0.3.9.1 Jun 06, 2014
 
