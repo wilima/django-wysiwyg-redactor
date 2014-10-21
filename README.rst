@@ -133,6 +133,15 @@ Contributing
 
 History
 -------
+-  0.4.1 oct 21, 2014
+
+   -   REDACTOR 10! o/
+   -   Requires jQuery 1.9.*
+   -   Some features now are plugins (see redactor docs)
+   -   Default: fixed toolbar mode
+   -   Bugs fixed, some features removed.
+   -   More: http://imperavi.com/redactor/docs/whats-new-10/
+
 -  0.4.0 sep 11, 2014
 
    -   Great news, now we have an sponsor, which means we can use a up-to-date version of redactorjs. Thanks to @etchalon. ( pull #48 )
