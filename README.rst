@@ -71,6 +71,7 @@ Using for only admin interface
 ------------------------------
 
 .. code-block:: python
+
     from django import forms
     from redactor.widgets import RedactorEditor
     from blog.models import Entry
@@ -133,6 +134,12 @@ Contributing
 
 History
 -------
+-  0.4.1.1 Nov 06, 2014
+
+   -   Fix: "ReferenceError: django is not defined" (pull #54)
+   -   Fix: Error in collectstatic post-process (pull #56)
+   -   Fix: code block on README
+
 -  0.4.1 oct 21, 2014
 
    -   REDACTOR 10! o/
