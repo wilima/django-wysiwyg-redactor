@@ -134,7 +134,7 @@ Contributing
 
 History
 -------
--  0.4.1.1 Nov 06, 2014
+-  0.4.2 Nov 06, 2014
 
    -   Fix: "ReferenceError: django is not defined" (pull #54)
    -   Fix: Error in collectstatic post-process (pull #56)
