@@ -132,51 +132,6 @@ Contributing
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request =]
 
-History
--------
--  0.4.2 Nov 06, 2014
-
-   -   Fix: "ReferenceError: django is not defined" (pull #54)
-   -   Fix: Error in collectstatic post-process (pull #56)
-   -   Fix: code block on README
-
--  0.4.1 oct 21, 2014
-
-   -   REDACTOR 10! o/
-   -   Requires jQuery 1.9.*
-   -   Some features now are plugins (see redactor docs)
-   -   Default: fixed toolbar mode
-   -   Bugs fixed, some features removed.
-   -   More: http://imperavi.com/redactor/docs/whats-new-10/
-
--  0.4.0 sep 11, 2014
-
-   -   Great news, now we have an sponsor, which means we can use a up-to-date version of redactorjs. Thanks to @etchalon. ( pull #48 )
-   -   Working with python3.4
-   -   Update LICENSE
-   -   Better error handling
-
--  0.3.9.1 Jun 06, 2014
-
-   -   Added: Support for custom REDACTOR_FILE_STORAGE ( pull #45 #46 ) Thanks to @pztrick
-
--  0.3.9 Mar 29, 2014
-
-   -   New Feature: Upload Handler (pull #43) Special Thanks to @SilentSokolov
-   -   Fix unicode filename issue.
-
--  0.3.8.2 Feb 14, 2014
-
-   -   Improvement: Rename uploaded image by dint of uuid ( pull #33 )
-
--  0.3.8.1 Feb 13, 2014
-
-   -   Fix: Solve Deprecation of 'simplejson' ( pull #25 )
-
--  previous versions
-
-   -   Lots of fixes, see the commits.
-
 Who is behind this?
 -------------------
 Awesome people, you should see the `AUTHORS <https://github.com/douglasmiranda/django-wysiwyg-redactor/blob/master/AUTHORS>`_ file.
