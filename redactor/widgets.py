@@ -23,32 +23,34 @@ class RedactorEditor(widgets.Textarea):
               '''
 
     def __init__(self, *args, **kwargs):
-        self.upload_to = kwargs.pop('upload_to', '')
-        self.custom_options = kwargs.pop('redactor_options', {})
-        self.allow_file_upload = kwargs.pop('allow_file_upload', True)
-        self.allow_image_upload = kwargs.pop('allow_image_upload', True)
-        super(RedactorEditor, self).__init__(*args, **kwargs)
+        upload_to = kwargs.pop('upload_to', '')
+        custom_options = kwargs.pop('redactor_options', {})
+        allow_file_upload = kwargs.pop('allow_file_upload', True)
+        allow_image_upload = kwargs.pop('allow_image_upload', True)
 
-    def get_options(self):
         options = GLOBAL_OPTIONS.copy()
-        options.update(self.custom_options)
-        if self.allow_file_upload:
+        options.update(custom_options)
+        if allow_file_upload:
             options['fileUpload'] = reverse(
                 'redactor_upload_file',
-                kwargs={'upload_to': self.upload_to}
+                kwargs={'upload_to': upload_to}
             )
-        if self.allow_image_upload:
+        if allow_image_upload:
             options['imageUpload'] = reverse(
                 'redactor_upload_image',
-                kwargs={'upload_to': self.upload_to}
+                kwargs={'upload_to': upload_to}
             )
-        return json.dumps(options)
+        self.options = options
+        super(RedactorEditor, self).__init__(*args, **kwargs)
+
+    def json_options(self):
+        return json.dumps(self.options)
 
     def render(self, name, value, attrs=None):
         html = super(RedactorEditor, self).render(name, value, attrs)
         final_attrs = self.build_attrs(attrs)
         id_ = final_attrs.get('id')
-        html += self.init_js % (id_, self.get_options())
+        html += self.init_js % (id_, self.json_options())
         return mark_safe(html)
 
     def _media(self):
@@ -57,6 +59,18 @@ class RedactorEditor(widgets.Textarea):
             'redactor/redactor.js',
             'redactor/langs/{0}.js'.format(GLOBAL_OPTIONS.get('lang', 'en')),
         )
+
+        if self.options.has_key('plugins'):
+            plugins = self.options.get('plugins')
+            for plugin in plugins:
+                js = js + (
+                    'redactor/plugins/{0}.js'.format(plugin),
+                )
+
+        js = js + (
+            'redactor/langs/{0}.js'.format(GLOBAL_OPTIONS.get('lang', 'en')),
+        )
+
         css = {
             'all': (
                 'redactor/css/redactor.css',
