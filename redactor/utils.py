@@ -1,5 +1,9 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.utils import importlib
+from django.utils.encoding import force_unicode
+from django.utils.functional import Promise
+
+import json
 
 
 def import_class(path):
@@ -34,3 +38,14 @@ def is_module_image_installed():
         except ImportError:
             return False
     return True
+
+
+class LazyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_unicode(obj)
+        return super(LazyEncoder, self).default(obj)
+
+
+def json_dumps(data):
+    return json.dumps(data, cls=LazyEncoder)
