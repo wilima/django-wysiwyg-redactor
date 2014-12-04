@@ -88,6 +88,32 @@ Using for only admin interface
 
 `RedactorEditor` takes the same parameters as `RedactorField`.
 
+Using Plugins
+-------------
+`Download <http://imperavi.com/redactor/plugins/>`_ the plugin you want or `create a custom plugin <http://imperavi.com/redactor/docs/how-to-create-plugin/>`_.
+
+Then:
+
+.. code-block:: python
+
+    from django.db import models
+    from redactor.fields import RedactorField
+
+    class Entry(models.Model):
+        title = models.CharField(max_length=250, verbose_name=u'Title')
+        short_text = RedactorField(
+            verbose_name=u'Text',
+            # for example, if you downloaded the 'table' plugin:
+            redactor_options={'plugins': ['table']}
+        )
+
+OR (on settings.py):
+
+.. code-block:: python
+
+    REDACTOR_OPTIONS = {'lang': 'en', 'plugins': ['table']}
+
+Important: if you set a plugin called "table", you must create/paste the "table.js" on **YOUR_STATIC_FILES_FOLDER/redactor/plugins/table.js**
 
 Upload Handlers
 ---------------
