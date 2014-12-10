@@ -1,6 +1,11 @@
 History
 =======
 
+0.4.3 Dez 10, 2014
+
+ * New: Plugin feature. Easy way to work with plugins for redactor. (issue #54)
+ * Update: Update redactor v10.0.5
+
 0.4.2 Nov 06, 2014
 
  * Fix: "ReferenceError: django is not defined" (pull #54)
