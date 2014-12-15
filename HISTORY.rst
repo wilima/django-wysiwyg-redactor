@@ -1,6 +1,10 @@
 History
 =======
 
+0.4.3.1 Dez 15, 2014
+
+ * Fix: Error in collectstatic post-process. (issue #62)
+
 0.4.3 Dez 10, 2014
 
  * New: Plugin feature. Easy way to work with plugins for redactor. (issue #54)
