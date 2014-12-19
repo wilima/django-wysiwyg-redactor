@@ -1,6 +1,10 @@
 History
 =======
 
+0.4.3.2 Dez 19, 2014
+
+ * Fix: Python 3 compatibility (issue #44 pull #63)
+
 0.4.3.1 Dez 15, 2014
 
  * Fix: Error in collectstatic post-process. (issue #62)
