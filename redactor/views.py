@@ -33,6 +33,7 @@ class RedactorUploadView(FormView):
                                                         **kwargs)
 
     def form_invalid(self, form):
+        # TODO: Needs better error messages
         try:
             error = form.errors.values()[-1][-1]
         except:
