@@ -1,6 +1,11 @@
 History
 =======
 
+0.4.4 Jan 04, 2015
+
+ * Fix: upload_to parameter working properly. ( pull #67 )
+ * New: Better way to customize callbacks, on redactor init file. ( pull #66 )
+
 0.4.3.2 Dez 19, 2014
 
  * Fix: Python 3 compatibility (issue #44 pull #63)
