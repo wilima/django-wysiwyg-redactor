@@ -14,7 +14,7 @@ class RedactorEditor(widgets.Textarea):
     init_js = '''<script type="text/javascript">
                     jQuery(document).ready(function(jQuery){
                         var $field = jQuery("#%s");
-                        options = %s;
+                        options = $.extend({}, default_options, %s);
                         options.imageUploadErrorCallback = function(json){
                             alert(json.error);
                         };
