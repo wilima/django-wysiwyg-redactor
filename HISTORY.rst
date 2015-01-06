@@ -1,6 +1,10 @@
 History
 =======
 
+0.4.4.1 Jan 05, 2015
+
+ * Fix: Using jQuery instead "$".
+
 0.4.4 Jan 04, 2015
 
  * Fix: upload_to parameter working properly. ( pull #67 )
