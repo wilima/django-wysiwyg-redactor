@@ -140,11 +140,18 @@ This can be overriden to use a different storage backend with this settings.py v
 
 .. code-block::
 
-    REDACTOR_FILE_STORAGE = 'my_site.file_storages.storage_instance'
+    REDACTOR_FILE_STORAGE = 'my_site.file_storages.StorageClass'
 
 Information on writing a custom storage backend is `here in the Django documentation <https://docs.djangoproject.com/en/1.7/howto/custom-file-storage/>`_.
 
-Other third-party libraries exist to provide storage backends for cloud object storages (e.g. `django-cumulus <https://github.com/django-cumulus/django-cumulus/>`_ for Rackspace/OpenStack or `django-storages <http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html>`_ for Amazon S3).
+Other third-party libraries exist to provide storage backends for cloud object storages (e.g. `django-cumulus <https://github.com/django-cumulus/django-cumulus/>`_ for Rackspace/OpenStack or `django-storages <http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html>`_ for Amazon S3). For example, following should be enough to store all your files and images to Amazon S3, even if the rest of the application uses different storage.
+
+.. code-block:: python
+
+    REDACTOR_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    AWS_ACCESS_KEY_ID = '...'
+    AWS_SECRET_ACCESS_KEY = '...'
+    AWS_STORAGE_BUCKET_NAME = '...'
 
 
 NOTE: Soon we will have a better documentation.

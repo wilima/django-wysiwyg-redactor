@@ -15,8 +15,15 @@ class BaseUploaderRedactor(object):
         self.upload_to = upload_to
 
         file_storage_class = getattr(settings, 'REDACTOR_FILE_STORAGE',
-                                     'django.core.files.storage.default_storage')
-        self.file_storage = import_class(file_storage_class)
+                                     'django.core.files.storage.DefaultStorage')
+
+        # File storage can either be a Storage instance (currently deprecated),
+        # or a class which we should instantiate ourselves
+        file_storage = import_class(file_storage_class)
+        if isinstance(file_storage, type):
+            # The class case
+            file_storage = file_storage()
+        self.file_storage = file_storage
 
     def get_file(self):
         """
