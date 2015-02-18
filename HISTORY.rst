@@ -1,6 +1,11 @@
 History
 =======
 
+0.4.5 Fev 18, 2015
+
+ * Better support for File Storage ( pull #69 )
+ * Update redactor v10.0.7
+
 0.4.4.1 Jan 05, 2015
 
  * Fix: Using jQuery instead "$".
