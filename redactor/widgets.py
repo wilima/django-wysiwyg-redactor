@@ -58,10 +58,6 @@ class RedactorEditor(widgets.Textarea):
                     'redactor/plugins/{0}.js'.format(plugin),
                 )
 
-        js = js + (
-            'redactor/langs/{0}.js'.format(GLOBAL_OPTIONS.get('lang', 'en')),
-        )
-
         css = {
             'all': (
                 'redactor/css/redactor.css',
