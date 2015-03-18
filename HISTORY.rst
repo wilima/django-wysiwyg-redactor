@@ -1,6 +1,10 @@
 History
 =======
 
+0.4.5.1 Mar 17, 2015
+
+ * Update redactor v10.0.9
+
 0.4.5 Fev 18, 2015
 
  * Better support for File Storage ( pull #69 )
