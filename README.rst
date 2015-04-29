@@ -131,6 +131,19 @@ For example, if I want to use the DateDirectoryUploader handler, I will put this
 
     REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
+Upload permissions
+------------------
+By default django-wysiwyg-redactor uses `staff_member_required` decorator from
+`django.contrib.admin.views.decorators` package to control access to dispatch
+method.
+
+To use custom authentication decorator, set `REDACTOR_AUTH_DECORATOR` to
+anything else, eg. if every authenticated user should have permissions to
+upload files/images/etc.:
+
+.. code-block:: python
+
+    REDACTOR_AUTH_DECORATOR = 'django.contrib.auth.decorators.login_required'
 
 File Storages
 -------------
