@@ -13,14 +13,13 @@ Screenshot
 What's that
 -----------------
 
-*django-wysiwyg-redactor* is a reusable application for Django, using `Redactor WYSIWYG editor <http://redactorjs.com/>`_
+*django-wysiwyg-redactor* is a text editor application for Django, using `Redactor WYSIWYG editor <http://redactorjs.com/>`_
 
 Sponsored by `Mess Marketing <http://www.thisismess.com>`_, we use the latest version of redactorjs, always up-to-date.
 
-Dependence
+Dependency
 ----------
 
-- `Django >= 1.3` # for static files
 - `Pillow or PIL` # for image upload
 
 Getting started
@@ -32,7 +31,24 @@ Getting started
 
 - Add `'redactor'` to INSTALLED_APPS.
 
+.. code-block:: python
+
+    INSTALLED_APPS = (  
+        # ...  
+        'redactor',  
+        # ...  
+    ) 
+
 - Add `url(r'^redactor/', include('redactor.urls'))`, to urls.py
+
+.. code-block:: python
+
+    urlpatterns = [
+        # ...
+        url(r'^redactor/', include('redactor.urls')),
+        # ...
+    ]
+
 
 - Add default config in settings.py
 
@@ -67,8 +83,8 @@ or use custom parametrs:
         allow_image_upload=True
     )
 
-Using for only admin interface
-------------------------------
+Using only in Django Admin
+--------------------------
 
 .. code-block:: python
 
@@ -178,8 +194,8 @@ Contributing
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request =]
 
-Who is behind this?
--------------------
+Made by robots, or what?
+------------------------
 Awesome people, you should see the `AUTHORS <https://github.com/douglasmiranda/django-wysiwyg-redactor/blob/master/AUTHORS>`_ file.
 
 And our awesome sponsor:
