@@ -1,6 +1,12 @@
 History
 =======
 
+0.4.6 Apr 30, 2015
+
+ * Update redactor v10.1.1
+ * Allow using custom auth decorator for RedactorUploadView #82
+ * Removed a pair of ` #77
+
 0.4.5.1 Mar 17, 2015
 
  * Update redactor v10.0.9
