@@ -11,7 +11,8 @@ GLOBAL_OPTIONS = getattr(settings, 'REDACTOR_OPTIONS', {})
 
 
 class RedactorEditor(widgets.Textarea):
-    init_js = '<script>jQuery(document).ready(function(){jQuery("#%s").redactor(jQuery.extend({}, redactor_default_options, %s));});</script>'
+    init_js = ''
+    #'<script>jQuery(document).ready(function(){console.log("here"); jQuery("#%s").redactor(jQuery.extend({}, redactor_default_options, %s));});</script>'
 
     def __init__(self, *args, **kwargs):
         self.upload_to = kwargs.pop('upload_to', '')
@@ -37,11 +38,15 @@ class RedactorEditor(widgets.Textarea):
         return options
 
     def render(self, name, value, attrs=None):
+        if 'class' not in attrs.keys():
+            attrs['class'] = ''
+
+        attrs['class'] += ' redactor-box'
+
+        attrs['data-redactor-options'] = json_dumps(self.options)
+
         html = super(RedactorEditor, self).render(name, value, attrs)
-        final_attrs = self.build_attrs(attrs)
-        id_ = final_attrs.get('id')
-        json_options = json_dumps(self.options)
-        html += self.init_js % (id_, json_options)
+
         return mark_safe(html)
 
     def _media(self):
