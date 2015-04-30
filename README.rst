@@ -1,7 +1,7 @@
 A lightweight wysiwyg editor for Django
 =======================================
 
-.. image:: https://pypip.in/download/django-wysiwyg-redactor/badge.png
+.. image:: https://img.shields.io/pypi/dm/django-wysiwyg-redactor.svg
     :target: https://pypi.python.org/pypi/django-wysiwyg-redactor/
     :alt: Downloads
 
