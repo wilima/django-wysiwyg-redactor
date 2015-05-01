@@ -61,7 +61,8 @@ class RedactorUploadView(FormView):
     def form_valid(self, form):
         file_ = form.cleaned_data['file']
         handler_class = import_class(self.upload_handler)
-        uploader = handler_class(file_, upload_to=self.kwargs.get('upload_to', None))
+        uploader = handler_class(file_,
+                                 upload_to=self.kwargs.get('upload_to', None))
         uploader.save_file()
         file_name = force_str(uploader.get_filename())
         file_url = force_str(uploader.get_url())

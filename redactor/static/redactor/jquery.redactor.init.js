@@ -18,18 +18,18 @@ jQuery(document).ready(function() {
         }
         jQuery(this).redactor(redactor_options);
     });
-	jQuery(document).trigger('redactorWidgetReady');
+    jQuery(document).trigger('redactorWidgetReady');
 
-	jQuery('textarea.redactor-box:not([id*="__prefix__"])').each(function() {
-		jQuery(this).trigger('initialize');
-	});
+    jQuery('textarea.redactor-box:not([id*="__prefix__"])').each(function() {
+        jQuery(this).trigger('initialize');
+    });
 
-	 jQuery(document).bind('DOMNodeInserted', function(e) {
-		var widget = jQuery(e.target).find('.redactor-box');
+     jQuery(document).bind('DOMNodeInserted', function(e) {
+        var widget = jQuery(e.target).find('.redactor-box');
 
-		if (!widget.length) return;
+        if (!widget.length) return;
 
-		widget.trigger('initialize');
-	});
+        widget.trigger('initialize');
+    });
 
 });

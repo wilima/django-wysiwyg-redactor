@@ -44,7 +44,7 @@ class BaseUploaderRedactor(object):
         """
         if not hasattr(self, 'real_path'):
             self.real_path = self.file_storage.save(self.get_full_path(),
-                                                  self.get_file())
+                                                    self.get_file())
         return self.real_path
 
     def get_url(self):

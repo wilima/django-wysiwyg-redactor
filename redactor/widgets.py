@@ -11,9 +11,6 @@ GLOBAL_OPTIONS = getattr(settings, 'REDACTOR_OPTIONS', {})
 
 
 class RedactorEditor(widgets.Textarea):
-    init_js = ''
-    #'<script>jQuery(document).ready(function(){console.log("here"); jQuery("#%s").redactor(jQuery.extend({}, redactor_default_options, %s));});</script>'
-
     def __init__(self, *args, **kwargs):
         self.upload_to = kwargs.pop('upload_to', '')
         self.custom_options = kwargs.pop('redactor_options', {})
