@@ -1,5 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
-from django.utils import importlib
+from importlib import import_module
+
 try:
     from django.utils.encoding import force_text
 except ImportError:
@@ -18,7 +19,7 @@ def import_class(path):
 
     class_name = path_bits.pop()
     module_path = '.'.join(path_bits)
-    module_itself = importlib.import_module(module_path)
+    module_itself = import_module(module_path)
 
     if not hasattr(module_itself, class_name):
         message = "The Python module '{0}' has no '{1}' class.".format(
