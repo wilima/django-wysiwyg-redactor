@@ -1,6 +1,12 @@
 History
 =======
 
+0.4.7 May 1, 2015
+
+ * Now it works with django inline formset #83
+ * More Python 3 compatibility
+ * Fix import_module warning
+
 0.4.6 Apr 30, 2015
 
  * Update redactor v10.1.1
