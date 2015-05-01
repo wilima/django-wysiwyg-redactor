@@ -11,6 +11,14 @@ from django.utils.encoding import force_str
 from redactor.forms import ImageForm
 from redactor.utils import import_class, is_module_image_installed
 
+# deal with python3 basestring
+try:
+    unicode = unicode
+except NameError:
+    basestring = (str, bytes)
+else:
+    basestring = basestring
+
 
 class RedactorUploadView(FormView):
     form_class = ImageForm
