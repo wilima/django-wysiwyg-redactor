@@ -1,5 +1,5 @@
-if(typeof django !== "undefined") {
-    jQuery = django.jQuery.noConflict(true);
+if (typeof jQuery === 'undefined' && django && django.jQuery) {
+    jQuery = django.jQuery;
 }
 
 /**
