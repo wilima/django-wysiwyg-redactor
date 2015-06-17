@@ -1,35 +1,34 @@
-if(typeof django !== "undefined") {
-    jQuery = django.jQuery.noConflict(true);
+if (typeof jQuery === 'undefined' && django && django.jQuery) {
+    jQuery = django.jQuery;
 }
 
-/**
-This makes sure that we initialise the redactor on the text area once its displayed
-so it can be used as part of an inline formset.
+(function($) {
+    $(document).ready(function() {
+        $(document).on('redactor:init', 'textarea.redactor-box', function() {
+            redactor_options = $(this).data('redactor-options');
+            redactor_options.imageUploadErrorCallback = function (json) {
+                // TODO: Needs better error messages
+                alert(json.error);
+            }
+            $(this).redactor(redactor_options);
+        });
+        $(document).trigger('redactorWidgetReady');
 
-Credit to the approach taken in:
-https://github.com/yourlabs/django-autocomplete-light
-**/
-jQuery(document).ready(function() {
-    jQuery('textarea.redactor-box').on('initialize', function() {
-        redactor_options = jQuery(this).data('redactor-options');
-        redactor_options.imageUploadErrorCallback = function (json) {
-            // TODO: Needs better error messages
-            alert(json.error);
-        }
-        jQuery(this).redactor(redactor_options);
+        $('textarea.redactor-box:not([id*="__prefix__"])').each(function() {
+            $(this).trigger('redactor:init');
+        });
+
+        // Initialize Redactor on admin's dynamically-added inline
+        // formsets.
+        //
+        // Credit to the approach taken in django-selectable:
+        // https://github.com/mlavin/django-selectable
+        $(document).on('click', '.add-row', function () {
+            $(this)
+                .parents('.inline-related')
+                .find('.form-row:not(.empty-form)').last()
+                .find('textarea.redactor-box')
+                .trigger('redactor:init');
+        });
     });
-    jQuery(document).trigger('redactorWidgetReady');
-
-    jQuery('textarea.redactor-box:not([id*="__prefix__"])').each(function() {
-        jQuery(this).trigger('initialize');
-    });
-
-     jQuery(document).bind('DOMNodeInserted', function(e) {
-        var widget = jQuery(e.target).find('.redactor-box');
-
-        if (!widget.length) return;
-
-        widget.trigger('initialize');
-    });
-
-});
+})(jQuery);
