@@ -2,13 +2,19 @@ if (typeof jQuery === 'undefined' && django && django.jQuery) {
     jQuery = django.jQuery;
 }
 
+if (typeof redactor_custom_options === 'undefined') {
+    redactor_custom_options = {}
+}
+
 (function($) {
     $(document).ready(function() {
         $(document).on('redactor:init', 'textarea.redactor-box', function() {
-            redactor_options = $(this).data('redactor-options');
-            redactor_options.imageUploadErrorCallback = function (json) {
-                // TODO: Needs better error messages
-                alert(json.error);
+            var redactor_options = $.extend({}, $(this).data('redactor-options'),
+                                            redactor_custom_options);
+            if (typeof redactor_options.imageUploadErrorCallback === 'undefined') {
+                redactor_options.imageUploadErrorCallback = function (json) {
+                    alert(json.error);
+                }
             }
             $(this).redactor(redactor_options);
         });
@@ -24,11 +30,10 @@ if (typeof jQuery === 'undefined' && django && django.jQuery) {
         // Credit to the approach taken in django-selectable:
         // https://github.com/mlavin/django-selectable
         $(document).on('click', '.add-row', function () {
-            $(this)
-                .parents('.inline-related')
-                .find('.form-row:not(.empty-form)').last()
-                .find('textarea.redactor-box')
-                .trigger('redactor:init');
+            $(this).parents('.inline-related')
+                   .find('tr.form-row:not(.empty-form)').last()
+                   .find('textarea.redactor-box')
+                   .trigger('redactor:init');
         });
     });
 })(jQuery);
