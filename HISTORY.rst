@@ -1,6 +1,13 @@
 History
 =======
 
+0.4.8 Jun 18, 2015
+
+ * Fix the way we provide redactor callbacks (alpha feature)
+ * Better inlines support
+ * Django-suit support
+ * Redactor v10.1.3
+
 0.4.7 May 1, 2015
 
  * Now it works with django inline formset #83
