@@ -17,8 +17,6 @@ form .redactor-toolbar { padding-left: 0; }
     max-width: 100%;
 }
 
-.field-content label { display: none; }
-
 .redactor-box li,
 .redactor_toolbar li {
     font-size: 14px;
