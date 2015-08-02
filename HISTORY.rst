@@ -1,6 +1,15 @@
 History
 =======
 
+0.4.9 Aug 2, 2015
+
+ * Update redactor v10.2.2
+ * Use redactor.min.js if DEBUG is False #96
+
+0.4.8.1 Jun 18, 2015
+
+ * Fix: #84
+
 0.4.8 Jun 18, 2015
 
  * Fix the way we provide redactor callbacks (alpha feature)
