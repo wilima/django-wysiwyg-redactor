@@ -8,7 +8,7 @@ from redactor.views import RedactorUploadView
 from redactor.forms import FileForm, ImageForm
 
 
-urlpatterns = patterns(
+urlpatterns = [
     '',
     url(r'^upload/image/(?P<upload_to>.*)',
         RedactorUploadView.as_view(form_class=ImageForm),
@@ -17,4 +17,4 @@ urlpatterns = patterns(
     url(r'^upload/file/(?P<upload_to>.*)',
         RedactorUploadView.as_view(form_class=FileForm),
         name='redactor_upload_file'),
-)
+]
